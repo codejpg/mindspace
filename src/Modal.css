@@ -1,0 +1,185 @@
+@font-face {
+    font-family: AndaleMono;
+    src: url(./fonts/AndaleMono.ttf);
+}
+
+.modal {
+    font-family: AndaleMono;
+    position: fixed;
+    top: 10%;
+    right: 10%;
+    bottom: 10%;
+    left: 10%;
+    padding: 10px;
+    box-shadow: 0 10px 30px 0 rgba(127, 127, 127, 0.3);
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+.popup1 {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 23px 27px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 23px 27px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 23px 27px rgba(0, 0, 0, 0.3);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    overflow: hidden;
+}
+
+.popup {
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    top: 20%;
+    bottom: 20%;
+    margin: 40 0 0 40;
+    padding: 0 40px 0 20px;
+    background: white;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 23px 27px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 23px 27px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 23px 27px rgba(0, 0, 0, 0.3);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    overflow: hidden;
+}
+
+.popup2 {
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    top: 20%;
+    bottom: 20%;
+    margin: 40 0 0 40;
+    padding: 0 40px 0 20px;
+    background: rgb(238, 237, 237);
+    border: solid 0.5px grey;
+    border-radius: 3px;
+    -webkit-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    -moz-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    overflow: hidden;
+
+}
+
+.popup #modalTopBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(216, 214, 214);
+    border-bottom: solid rgb(34, 34, 34)y;
+    text-align: center;
+}
+
+.popup2 #modalTopBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(216, 214, 214);
+    border-bottom: solid 1px rgb(34, 34, 34);
+    text-align: center;
+}
+
+#modalTopBar h1 {
+    font-size: 18pt;
+    font-family: AndaleMono;
+    margin: auto;
+}
+
+.content {
+    padding-top: 30px;
+}
+
+
+
+
+
+.closeBtn {
+    border-radius: 90%;
+    background-color: #ffa6a4;
+    border: none;
+    color: white;
+    padding: 20px, 10px, 20px, 10PX;
+    margin: 5px;
+    text-align: center;
+    vertical-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.closeBtn:hover {
+    background-color: #e18e8d;
+}
+
+.closeBtnEck {
+    background-color: #828282;
+    border: solid 0.5px black;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12pt;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+
+
+.progress {
+    background-color: #ffe7a0;
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    top: 20%;
+    bottom: 20%;
+    margin: 40 0 0 40;
+    padding: 0 40px 0 20px;
+    border: solid 1px;
+    border-radius: 1px;
+    -webkit-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    ;
+    -moz-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    ;
+    box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    ;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 400px
+}

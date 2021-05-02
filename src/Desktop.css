@@ -1,0 +1,138 @@
+:root {
+  --base: $primary;
+}
+
+html,
+body {
+
+  font-family: Bitwise;
+  background-size: 50px 50px;
+  background-color: #eef2f3;
+  color: rgb(50, 50, 50);
+  -ms-user-select: None;
+  -moz-user-select: None;
+  -webkit-user-select: None;
+  user-select: None;
+  background-image: linear-gradient(0deg, transparent 24%, rgba(7, 255, 2, 0.05) 25%, rgba(7, 255, 2, 0.05) 26%, transparent 27%, transparent 74%, rgba(7, 255, 2, 0.05) 75%, rgba(7, 255, 2, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(7, 255, 2, 0.05) 25%, rgba(7, 255, 2, 0.05) 26%, transparent 27%, transparent 74%, rgba(7, 255, 2, 0.05) 75%, rgba(7, 255, 2, 0.05) 76%, transparent 77%, transparent);
+  height: 100%;
+  background-size: 50px 50px;
+}
+
+@font-face {
+  font-family: Bitwise;
+  src: url(./fonts/AndaleMono.ttf);
+}
+
+.folder img {
+  max-width: 100px;
+}
+
+
+
+.folder {
+  width: 110px;
+  padding: 10px;
+  align-content: center;
+  text-align: center;
+}
+
+.folder:hover {
+  background: pink;
+}
+
+.folderWrapper img {
+  width: 75px;
+}
+
+.folderWrapper p {
+  font-family: Bitwise;
+  font-size: 14pt;
+  text-transform: uppercase;
+}
+
+.folderWrapper {
+  justify-content: center;
+  width: 80px;
+  align-content: center;
+  text-align: center;
+}
+
+.sketchWrap {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.contentWrap {
+  padding: 10%;
+}
+
+.kunstOrdner img {
+  width: 200px;
+  margin: 20px;
+}
+
+.inputStyle {
+  position: "absolute";
+  right: 10;
+  top: 100;
+
+}
+
+.saveButton {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.topBar {
+  position: absolute;
+  display: inline-grid;
+  grid-column: 1fr 1f;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 30px;
+  background-color: rgba(0, 255, 255, 0.496);
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.topBar .time {
+  position: absolute;
+  right: 10px;
+}
+
+.topBar p {
+  position: absolute;
+  left: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: 0 0 5px grey;
+  border-radius: 0px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}

@@ -1,0 +1,103 @@
+.fullScreenLogin {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #eef2f3;
+    color: rgb(50, 50, 50);
+    align-content: center;
+    vertical-align: center;
+
+}
+
+.fullScreenLogin .codeInputWrap {
+    width: 350px;
+    height: 100px;
+    padding: 2%;
+
+    background-color: #419e9f;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    height: 25%;
+
+    margin: -70px 0 0 -170px;
+    justify-content: center;
+    align-content: center;
+    box-shadow: 0.6rem 0.6rem 0 rgba(0, 0, 0, 0.366);
+
+}
+
+#codeInput {
+    border: 1px solid black;
+    transition: all 0.2s;
+
+    width: 100%;
+    height: 50px;
+    font-size: 30pt;
+    margin-top: 10%;
+    text-align: center;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
+    transform: translate(-0.4rem, -0.4rem);
+}
+
+#codeInput:hover,
+#codeInput:active {
+    box-shadow: 0 0 0 black;
+    transform: translate(0, 0);
+}
+
+#codeButton {
+
+    width: 80%;
+    height: 50px;
+    font-size: 20pt;
+    background-color: #37c7c4;
+    border: 1px solid black;
+
+    box-shadow: 0 0 0 black;
+    transition: all 0.2s;
+    margin-top: 40px;
+    padding: 2% 15%;
+    margin-left: 10%;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    text-align: center;
+    box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
+    transform: translate(-0.4rem, -0.4rem);
+
+}
+
+#codeButton:hover {
+    box-shadow: 0 0 0 black;
+    transform: translate(0, 0);
+}
+
+#codeButton:active {
+    box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
+    transform: translate(-0.4rem, -0.4rem);
+
+}
+
+#codeInput::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    font-size: 12pt;
+
+}
+
+#codeInput::-moz-placeholder {
+    /* Firefox 19+ */
+    font-size: 12pt;
+}
+
+#codeInput:-ms-input-placeholder {
+    /* IE 10+ */
+    font-size: 12pt;
+}
+
+#codeInput:-moz-placeholder {
+    /* Firefox 18- */
+    font-size: 12pt;
+}
