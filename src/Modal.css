@@ -3,6 +3,11 @@
     src: url(./fonts/AndaleMono.ttf);
 }
 
+@font-face {
+    font-family: BonnySketch;
+    src: url(./fonts/BonnySketch.ttf);
+}
+
 .modal {
     font-family: AndaleMono;
     position: fixed;
@@ -104,6 +109,17 @@
     text-align: center;
 }
 
+.popup2 #modalTopBar2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(216, 214, 214);
+    border-bottom: solid 1px rgb(34, 34, 34);
+    text-align: center;
+}
+
 #modalTopBar h1 {
     font-size: 18pt;
     font-family: AndaleMono;
@@ -114,6 +130,45 @@
     padding-top: 30px;
 }
 
+.Modal {
+    position: fixed;
+    width: 15%;
+    right: 10%;
+    top: 10%;
+    margin: 40 0 0 40;
+    padding: 0 40px 0 20px;
+    background: rgb(238, 237, 237);
+    border: solid 0.5px grey;
+    border-radius: 3px;
+    -webkit-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    -moz-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    overflow: hidden;
+    z-index: 1001;
+}
+
+.Modal #modalTopBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(216, 214, 214);
+    border-bottom: solid rgb(34, 34, 34)y;
+    text-align: center;
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(102, 51, 153, 0);
+}
 
 
 
@@ -121,7 +176,7 @@
 .closeBtn {
     border-radius: 90%;
     background-color: #ffa6a4;
-    border: none;
+    border: solid 0.5px rgba(0, 0, 0, 0.466);
     color: white;
     padding: 20px, 10px, 20px, 10PX;
     margin: 5px;
@@ -160,12 +215,49 @@
 
 
 .progress {
+    font-family: BonnySketch;
     background-color: #ffe7a0;
+    position: absolute;
+    left: 37%;
+    right: 37%;
+    top: 30%;
+    bottom: 30%;
+    margin: 40 0 0 40;
+    padding: 0 40px 0 20px;
+    border: solid 1px;
+    border-radius: 1px;
+    -webkit-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    ;
+    -moz-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    ;
+    box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    ;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    overflow: hidden;
+
+}
+
+.progressStyle p {
+    font-family: BonnySketch;
+    font-size: 16pt;
+    text-transform: none;
+}
+
+.progressStyle h1 {
+    font-family: BonnySketch;
+    font-size: 16pt;
+
+}
+
+.scrollDiv {
+    background: white;
     position: absolute;
     left: 20%;
     right: 20%;
-    top: 20%;
-    bottom: 20%;
+    top: 10%;
+    bottom: 10%;
     margin: 40 0 0 40;
     padding: 0 40px 0 20px;
     border: solid 1px;
@@ -181,5 +273,94 @@
     background-clip: padding-box;
     overflow: hidden;
     overflow-y: scroll;
-    height: 400px
+    height: 80%
+}
+
+
+.scrollDiv #modalTopBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(216, 214, 214);
+    border-bottom: solid rgb(34, 34, 34)y;
+    text-align: center;
+}
+
+.kunstOrdner img {
+    width: 115%;
+    transform: translateX(-120px);
+
+}
+
+.saveButton {
+    background-color: #e18e8d;
+    position: fixed;
+    left: 500;
+    bottom: 5px;
+    border: solid 0.5px rgba(0, 0, 0, 0.466);
+    color: white;
+    padding: 20px, 10px, 20px, 10PX;
+    text-align: center;
+    vertical-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+
+}
+
+.settingsPopup {
+    background: rgb(238, 237, 237);
+    white-space: nowrap;
+    position: absolute;
+    left: 42%;
+    right: 42%;
+    top: 20%;
+    bottom: 20%;
+    margin: auto;
+    padding-left: 25px;
+    text-align: center;
+    border: solid 0.5px grey;
+    border-radius: 3px;
+    -webkit-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    -moz-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    overflow: hidden;
+}
+
+.settingsPopup #modalTopBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(216, 214, 214);
+    border-bottom: solid rgb(34, 34, 34)y;
+    text-align: center;
+}
+
+.folderWrapper[name="Einstellungen"] {
+    position: absolute;
+    top: 0;
+    right: 200px;
+
+    height: 30px;
+    padding: 0;
+    margin: 0;
+
+}
+
+.folderWrapper[name="Einstellungen"] img {
+    width: 23px;
+
+}
+
+.folderWrapper[name="Einstellungen"] p {
+    display: none;
+
 }

@@ -38,14 +38,17 @@ class Subliminal extends React.Component{
         const isVisible = this.state.isVisible;
         console.log("visible: "+isVisible)
         if(isVisible && this.state.count < 10){
-            setTimeout(() => { this.setState({isVisible: false}) }, 50)
+            setTimeout(() => { this.setState({isVisible: false}) }, 20)
           
        return(
           <div>
+               
               <div id="subliminal">
+              <img src={this.props.image.default}></img>
 
               <div className="center">
-              Katze</div></div></div>
+
+              </div></div></div>
        ) }
        else {
            return (

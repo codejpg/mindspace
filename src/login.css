@@ -5,29 +5,37 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #eef2f3;
+    background-color: #AFDCDc;
     color: rgb(50, 50, 50);
     align-content: center;
     vertical-align: center;
+    z-index: 1000;
+    background-size: 50px 50px;
+    background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.311) 25%, rgba(255, 255, 255, 0.311) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.311) 75%, rgba(255, 255, 255, 0.311) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.311) 25%, rgba(255, 255, 255, 0.311) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.311) 75%, rgba(255, 255, 255, 0.311) 76%, transparent 77%, transparent);
+    overflow: hidden;
 
 }
 
-.fullScreenLogin .codeInputWrap {
+.codeInputWrap {
     width: 350px;
-    height: 100px;
     padding: 2%;
 
-    background-color: #419e9f;
+    background-color: #eef2f3;
     position: absolute;
-    top: 40%;
-    left: 50%;
-    height: 25%;
-
+    top: 35%;
+    left: 47%;
+    height: 30%;
+    border: solid 1px grey;
+    padding: 60px;
     margin: -70px 0 0 -170px;
     justify-content: center;
     align-content: center;
     box-shadow: 0.6rem 0.6rem 0 rgba(0, 0, 0, 0.366);
 
+}
+
+.codeInputWrap p {
+    margin-top: 15%;
 }
 
 #codeInput {
@@ -37,7 +45,7 @@
     width: 100%;
     height: 50px;
     font-size: 30pt;
-    margin-top: 10%;
+    margin-top: 13%;
     text-align: center;
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
     box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
@@ -55,12 +63,13 @@
     width: 80%;
     height: 50px;
     font-size: 20pt;
-    background-color: #37c7c4;
+    background-color: #ffffff7b;
     border: 1px solid black;
 
     box-shadow: 0 0 0 black;
     transition: all 0.2s;
-    margin-top: 40px;
+    margin-top: 35px;
+    margin-bottom: 60px;
     padding: 2% 15%;
     margin-left: 10%;
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;

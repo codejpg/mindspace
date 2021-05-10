@@ -1,5 +1,6 @@
 import React from 'react'
 import "./login.css"
+import Logo from "./img/logo_1.svg"
 
 function Login(props) {
     
@@ -9,7 +10,9 @@ function Login(props) {
     }else {
     return (
         <div className="fullScreenLogin">
+            
             <div className="codeInputWrap">
+            <img src= {Logo} width="300px"></img>
                 <p>Bitte gebe deinen Zugangscode ein.</p>
                 <input autocomplete="off" id="codeInput" type="text" placeholder="Code eingeben"></input>
                 <button id="codeButton" onClick={props.onClick}>bestätigen</button>

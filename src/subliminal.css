@@ -10,6 +10,17 @@
     left: 0;
     right: 0;
     bottom: 0;
+    vertical-align: center;
+    align-content: center;
+}
+
+#subliminal img {
+    vertical-align: center;
+    width: 60%;
+    position: fixed;
+    top: 20%;
+    left: 20%;
+    z-index: 1000;
 }
 
 .center {

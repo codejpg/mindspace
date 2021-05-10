@@ -5,8 +5,8 @@ import dist from 'react-p5-wrapper';
 
 
 class sketch2 extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = ({
       klicked: false,
       pressed: false,
@@ -105,14 +105,23 @@ const saveCnv = (p5) => {
   to_save.save(to_save, 1 +".png")
 }
 const download=(p5) =>{
-  
+  var code = this.props.getCode();
   var canvas = document.getElementById("canvas");
   var url = canvas.toDataURL("image/png");
   var link = document.createElement('a');
-  link.download = 'filename.png';
+  link.download = code + '.png';
   link.href = url;
   link.click();
 }
+
+const speichern=(p5) =>{
+  var code = this.props.getCode();
+  var canvas = document.getElementById("canvas");
+  const base64Canvas = canvas.toDataURL("image/jpeg").split(';base64,')[1];
+ 
+  this.props.saveImage(base64Canvas);
+}
+
 
 function getImageURL(imgData, width, height) {
   var canvas = document.createElement('canvas');
@@ -126,7 +135,7 @@ function getImageURL(imgData, width, height) {
 
   
   return <div><Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} mousePressed={mousePressed} mouseReleased={mouseReleased}/>
-  <button className="saveButton" onClick={download}>Save</button></div>
+  <button className="saveButton" onClick={speichern}>Save</button></div>
 }
 }
 
