@@ -11,6 +11,8 @@ class Ordner extends React.Component {
     constructor(props){
       super(props);
         this.state = {
+    
+            name: "ordner",
             showModal: false,
             dataModal: {
               name: "",
@@ -26,7 +28,11 @@ class Ordner extends React.Component {
        
         console.log(this.state.modals)
       }
-    
+      componentDidMount(){
+        this.props.firstOpen(this.state.name)
+        
+
+    }
       getModal = data => {
         this.setState({ showModal: true, dataModal: data });
 

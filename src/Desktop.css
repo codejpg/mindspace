@@ -91,7 +91,7 @@ body {
 
 .folderWrapperWrapper {
   display: grid;
-  grid-template-columns: 100px 100px 1fr;
+  grid-template-columns: 100px 100px 100px 1fr;
   grid-template-rows: auto auto auto auto auto;
   grid-auto-flow: column;
   grid-gap: 80px;
@@ -136,7 +136,7 @@ code {
 .topBar {
   position: absolute;
   display: grid;
-  grid-template-columns: 100px 100px auto 20px 200px;
+  grid-template-columns: 100px 100px auto 20px 120px 200px;
   grid-template-rows: 100%;
   top: 0;
   right: 0;
@@ -180,6 +180,31 @@ code {
   background: rgb(238, 237, 237);
   border: solid 0.5px grey;
   border-radius: 3px;
+  -webkit-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+  -moz-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+  box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  overflow: hidden;
+}
+
+#nameChangePopup {
+  display: none;
+  width: 350px;
+  padding: 2%;
+
+  background-color: #eef2f3;
+  position: absolute;
+  top: 35%;
+  left: 47%;
+  height: 30%;
+  border: solid 1px grey;
+  padding: 60px;
+  margin: -70px 0 0 -170px;
+  justify-content: center;
+  align-content: center;
+  box-shadow: 0.6rem 0.6rem 0 rgba(0, 0, 0, 0.366);
   -webkit-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
   -moz-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
   box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
@@ -253,4 +278,78 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none;
+}
+
+#nameDisplay {
+  position: relative;
+  display: inline-block;
+  height: 30px;
+  min-width: 100px;
+  margin-top: 5px;
+  padding: 16px 16px 10px 16px;
+  font-weight: 600;
+
+
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  padding: 12px 16px;
+  margin-top: 7px;
+  z-index: 100;
+  -webkit-box-shadow: 0.6rem 0.6rem 0 rgba(0, 0, 0, 0.133);
+  -moz-box-shadow: 0.6rem 0.6rem 0 rgba(0, 0, 0, 0.133);
+  box-shadow: 0.6rem 0.6rem 0 rgba(0, 0, 0, 0.133);
+}
+
+#nameDisplay:hover .dropdown-content {
+  display: block;
+}
+
+#nameInput2 {
+  border: 1px solid black;
+  transition: all 0.2s;
+
+  width: 100%;
+  height: 50px;
+  font-size: 16pt;
+  margin-top: 13%;
+  text-align: center;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
+  transform: translate(-0.4rem, -0.4rem);
+}
+
+#nameInput2:hover,
+#nameInput2:active,
+#nameChangeButton:hover {
+  box-shadow: 0 0 0 black;
+  transform: translate(0, 0);
+}
+
+#nameChangeButton:active {
+  background-color: cadetblue;
+}
+
+#nameChangeButton {
+
+  width: 80%;
+  height: 50px;
+  font-size: 12pt;
+  background-color: #ffffff7b;
+  border: 1px solid black;
+  box-shadow: 0 0 0 black;
+  transition: all 0.2s;
+  margin-top: 35px;
+  margin-bottom: 60px;
+  padding: 2% 15%;
+  margin-left: 10%;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  text-align: center;
+  box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
+  transform: translate(-0.4rem, -0.4rem);
+
 }

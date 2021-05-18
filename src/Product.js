@@ -4,13 +4,14 @@ import Draggable from "react-draggable";
 import HoverImage from "react-hover-image";
 import { ThemeConsumer } from "styled-components";
 import Modal from "./Modal";
-
+var username
 
 
 class Product extends Component {
   constructor(props){
     super(props);
       this.state = {
+        nameShow: this.props.nameShow,
         modals: this.props.data
       }
       this.state.modals.forEach(function (modal) {
@@ -60,10 +61,10 @@ getActive = data => {
 };
 
 
-
 render() {
-  
- 
+
+
+
   return (
 
 
@@ -71,7 +72,7 @@ render() {
    <div className="folderWrapperWrapper">
      
       { this.props.data.map((data, key) => (
-       
+       data.nameShow ?   username =  this.props.getName()+"'s": username= "",
         data.show && data.id != 100 ? 
         <div key={data.id} id={data.id} name={data.name} className="folderWrapper">
             <div onClick={() => this.getModal(data)}>
@@ -79,7 +80,8 @@ render() {
                   onMouseEnter={e => (e.currentTarget.src = data.hoverImage)}
                   onMouseOut={e => (e.currentTarget.src = data.image)}
                 />
-                <p>{data.name}</p></div>
+
+                <p>{username}  {data.name}</p></div>
         </div> : null
       ))}
 

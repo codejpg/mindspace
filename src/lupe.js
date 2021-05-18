@@ -5,12 +5,16 @@ import Muster from "./img/rotesMuster-47.svg"
 class Lupe extends React.Component {
     constructor(props){
         super(props)
-        this.state={
-            opened: this.props.opened
+        this.state = {
+            name: "lupe"
         }
+      
     }
+    
     componentDidMount(){
-        this.props.firstOpen()
+        this.props.firstOpen(this.state.name)
+        
+
     }
     render(){
         return(

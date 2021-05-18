@@ -77,8 +77,13 @@ class App extends React.Component {
     this.state = {
       id: 0, 
       code: "0000", 
+      userName: "User",
       clicks: 0, 
       influencePoints: 0,
+      progressLupe: false,
+      progressOrdner: false,
+      progressSketch: false,
+      progressSubliminal: false,
       progressPoints: 0,
       quizProgress: 0,
       showKunst: false,
@@ -104,21 +109,21 @@ class App extends React.Component {
       month: today.getMonth(),
       wochentag : weekday[today.getDay()],
       displayText: "",
-      isLoggedIn: false,
+      isLoggedIn: true,
       login: "",
       post: [
-        { id: 1, name: "Polycon", className: "popup2", show: true, isActive: false, content: <Dum firstOpen= {this.firstOpen}/>, image: PolyImage,  hoverImage: PolyImageHover},
-        { id: 2, name: "Ordner", className: "popup2", show: true, isActive: false, content: <Ordner firstOpen= {this.firstOpen}/>, image: FolderImage, hoverImage: FolderImageHover },
-        { id: 3, name: "Spiel", className: "popup2", show: true, isActive: false, content: <PolySketch/>, image: GameImage, hoverImage: GameImageHover },
-        { id: 4, name: "Skizzen", className: "popup2",  show: true, isActive: false, content: <Sketch2 firstOpen= {this.firstOpen} getCode = { this.getCode } saveImage= {this.saveSketch}/>, image: DrawImage, hoverImage: DrawImageHover },
-        { id: 5, name: "Quiz", className: "popup2", show: true, isActive: false, content: <Quiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData}/>, image: QuizImage, hoverImage: QuizImageHover },
-        { id: 6, name: "Progress", className: "progress", show: true, isActive: false, content: <Progress/>, image: ProgressImage, hoverImage: ProgressImageHover },
-        { id: 7, name: "Einstellungen", className: "settingsPopup", show: true, isActive: false, content: <Settings firstOpen= {this.firstOpen} getBgColor= {this.getBackgroundColor}/>,  image: SettingsIcon,  hoverImage: SettingsIcon},
-        { id: 8, name: "Lupe", className: "popup2", show: true, isActive: false, content: <Lupe firstOpen= {this.firstOpen} opened="false"/>,  image: LupeImage,  hoverImage: LupeImageHover},
-        { id: 9, name: "Kunst", className: "scrollDiv ", show: false, isActive: false, content: <Kunst getCode = { this.getCode } getSketches={this.getSketches}/>, image: KunstImage, hoverImage: KunstImageHover },
-        { id: 10, name: "Notiz", className: "progress ", show: true, isActive: false, content: <Notiz saveNotes={this.saveNotes} getNotes={this.getNotes}/>, image: ProgressImage, hoverImage: ProgressImageHover },
-        { id: 11, name: "Ergebnis", className: "popup2 ", show: true, isActive: false, content: <Notiz saveNotes={this.saveNotes} getNotes={this.getNotes}/>, image: EndeImage, hoverImage: EndeImageHover },
-        { id: 12, name: "Text", className: "popup2 ", show: true, isActive: false, content: <Notiz saveNotes={this.saveNotes} getNotes={this.getNotes}/>, image: TextImage, hoverImage: TextImageHover },
+        { id: 1, name: "Polycon", className: "popup2", show: true, nameShow: false, isActive: false, content: <Dum firstOpen= {this.firstOpen}/>, image: PolyImage,  hoverImage: PolyImageHover},
+        { id: 2, name: "Ordner", className: "popup2", show: true, nameShow: false, isActive: false, content: <Ordner firstOpen= {this.firstOpen}/>, image: FolderImage, hoverImage: FolderImageHover },
+        { id: 3, name: "Spiel", className: "popup2", show: true, nameShow: false, isActive: false, content: <PolySketch/>, image: GameImage, hoverImage: GameImageHover },
+        { id: 4, name: "Skizzen", className: "popup2",  show: true, nameShow: true, isActive: false, content: <Sketch2 firstOpen= {this.firstOpen} getCode = { this.getCode } saveImage= {this.saveSketch}/>, image: DrawImage, hoverImage: DrawImageHover },
+        { id: 5, name: "Quiz", className: "popup2", show: true, nameShow: false, isActive: false, content: <Quiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData}/>, image: QuizImage, hoverImage: QuizImageHover },
+        { id: 6, name: "Progress", className: "progress", show: true, nameShow: false, isActive: false, content: <Progress/>, image: ProgressImage, hoverImage: ProgressImageHover },
+        { id: 7, name: "Einstellungen", className: "settingsPopup", show: true, nameShow: false, isActive: false, content: <Settings firstOpen= {this.firstOpen} getBgColor= {this.getBackgroundColor}/>,  image: SettingsIcon,  hoverImage: SettingsIcon},
+        { id: 8, name: "Lupe", className: "popup2", show: true, nameShow: false, isActive: false, content: <Lupe firstOpen= {this.firstOpen}/>,  image: LupeImage,  hoverImage: LupeImageHover},
+        { id: 9, name: "Notizen", className: "progress ", show: true,  nameShow: true, isActive: false, content: <Notiz saveNotes={this.saveNotes} getNotes={this.getNotes} />, image: ProgressImage, hoverImage: ProgressImageHover },
+        { id: 10, name: "Text", className: "popup2 ", show: true, nameShow: false, isActive: false, content: <Notiz firstOpen= {this.firstOpen} saveNotes={this.saveNotes} getNotes={this.getNotes}/>, image: TextImage, hoverImage: TextImageHover },
+        { id: 11, name: "Kunst", className: "scrollDiv ", show: false, nameShow: true, isActive: false, content: <Kunst firstOpen= {this.firstOpen} getCode = { this.getCode } getSketches={this.getSketches}/>, image: KunstImage, hoverImage: KunstImageHover },
+        { id: 12, name: "Ergebnis", className: "popup2 ", show: false, nameShow: true, isActive: false, content: <Notiz saveNotes={this.saveNotes} getNotes={this.getNotes}/>, image: EndeImage, hoverImage: EndeImageHover },
        
       ],
      
@@ -126,10 +131,12 @@ class App extends React.Component {
     };
       this.handleLoginClick = this.handleLoginClick.bind(this)
       this.handleNoteClick = this.handleNoteClick.bind(this)
+      this.handleNameChange= this.handleNameChange.bind(this)
       this.notificationOpen = this.notificationOpen.bind(this)
       this.clickSound = this.clickSound.bind(this)
-      this.toggleSettings = this.toggleSettings.bind(this)
+      this.toggleNameChangePopup = this.toggleNameChangePopup.bind(this)
       this.saveSketch = this.saveSketch.bind(this)
+      this.getName = this.getName.bind(this);
 
 
   }
@@ -174,15 +181,32 @@ class App extends React.Component {
     }
 
     handleLoginClick () {
-      
+      var input = document.getElementById('codeInput').value.trim();
+      var input2 = document.getElementById('nameInput').value.trim();
+      // if (!input.length) { evt.preventDefault(); }
+      if (!input.length || !input2.length) return false;  // cancel click
       this.setState({
         
-          code: (document.getElementById('codeInput').value),
-          isLoggedIn: true
-          
-        })
-        //document.getElementById('codeInputWrap').style.display = "none";
-        console.log(this.state.code)
+        code: (document.getElementById('codeInput').value),
+        userName: (document.getElementById('nameInput').value),
+        isLoggedIn: true
+        
+      })
+      return true
+    }
+
+    handleNameChange () {
+      var input2 = document.getElementById('nameInput2').value.trim();
+      this.toggleNameChangePopup();
+      // if (!input.length) { evt.preventDefault(); }
+      if ( !input2.length) return false;  // cancel click
+      this.setState({
+        userName: (document.getElementById('nameInput2').value),
+        
+      })
+      return true
+    
+
         
     }
 
@@ -241,8 +265,8 @@ class App extends React.Component {
     }
 
 
-    toggleSettings(){
-        var popup = document.getElementById("settingsPopup");
+    toggleNameChangePopup(){
+        var popup = document.getElementById("nameChangePopup");
         if(this.state.settingsVisible==false){
           popup.style.display = "flex";
           this.setState({settingsVisible: true})
@@ -262,17 +286,50 @@ class App extends React.Component {
     }
 
     firstOpen = (val) =>{
-      if (val == true ){
-        console.log(this.state.progressPoints)
-        return true
-      } else {
-        console.log(this.state.progressPoints)
-        this.setState(prevstate => ({ progressPoints: prevstate.progressPoints + 1}));
-        return true
+      if (val == "lupe" && this.state.progressLupe == false){
+          console.log("Progress:",this.state.progressPoints)
+          this.setState(prevstate => ({ progressPoints: prevstate.progressPoints + 1, progressLupe: true}));
+    } else if (val == "ordner" && this.state.progressOrdner == false){
+          console.log("Progress:",this.state.progressPoints)
+          this.setState(prevstate => ({ progressPoints: prevstate.progressPoints + 1, progressOrdner: true}));
+    } else if (val == "sketch" && this.state.progressOrdner == false){
+      console.log("Progress:",this.state.progressPoints)
+      this.setState(prevstate => ({ progressPoints: prevstate.progressPoints + 1, progressSketch: true}));
+    } else if (val == "subliminal" && this.state.progressOrdner == false){
+      console.log("Progress:",this.state.progressPoints)
+      this.setState(prevstate => ({ progressPoints: prevstate.progressPoints + 1, progressSubliminal: true}));
+    } else {
+        
+            console.log("Progress:",this.state.progressPoints)
+  
       }
       
+      if(this.state.progressPoints >= 3){
+        const name = "Ergebnis"
+        this.showHiddenProgram(name)
+      }
     }
-  
+
+    showHiddenProgram= (val) => {
+      
+        let posts = [...this.state.post];
+        let idx = posts.findIndex(obj => { return obj.name == val })
+        let post = posts[idx]
+        post.show = true;
+        posts[idx] = post
+        this.setState({
+          post: posts
+        })
+
+      
+    }
+
+    getName = () => {
+         
+      return this.state.userName
+
+    
+  }
     
             
     render(){
@@ -294,34 +351,34 @@ class App extends React.Component {
         <div className="topBar">
             <div><img src={Logo}></img></div>
             <div></div>
-            <div id="codeRead" value={this.state.code}>code: {this.state.code}</div>
+            <div id="codeRead" value={this.state.code}>code: {this.state.code}<div class="dropdown-content">Name ändern</div></div>
+            <div id="nameDisplay">{this.state.userName} <div class="dropdown-content" onClick={this.toggleNameChangePopup}>Name ändern</div></div>
             <div className="time">{this.state.wochentag}. {this.state.day}.{this.state.month}. <Clock format={'HH:mm:ss'} ticking={true} timezone={'Europe/Berlin'} /></div >
         </div>
+
            
       <div className="contentWrap">
           <div className="holder">
    
-        <Product data={this.state.post} onChange={this.notificationOpen} id={this.state.post.id} onClick={this.onSingleClickHandler} code={this.state.code}/>
+        <Product getName={this.getName} data={this.state.post} onChange={this.notificationOpen} id={this.state.post.id} onClick={this.onSingleClickHandler} code={this.state.code}/>
     
       </div> 
+
 </div>
-<Subliminal image={subimage}></Subliminal>
+<Subliminal image={subimage} firstOpen= {this.firstOpen}></Subliminal>
 <Draggable
           handle="#modalTopBar"
           bounds={{ top: -250, left: -500, right: 500, bottom: 250 }}>
-        <div id="settingsPopup">
+        <div id="nameChangePopup">
         <div id="modalTopBar"><h1>Einstellungen</h1>
-          <button className = "closeBtn" onClick={this.toggleSettings}></button>
+          <button className = "closeBtn" onClick={this.toggleNameChangePopup}></button>
         </div>
         <div className="content">
-        <p>Hintergrundfarbe ändern:</p>
-        {this.state.settings.map((data, key) => (
-        <div onClick={()=>this.setState({currentBgColor: data.bgColor})} className="colorSelector" style={{background: data.bgColor}}></div>
+        <p>Name ändern:</p>
+        <input autocomplete="off" id="nameInput2" type="text" placeholder="neuer Name"></input><br/>
+        <button id="nameChangeButton" onClick={this.handleNameChange}>bestätigen</button>
+                
     
-   
-           
-          
-        ))}
             </div>
          </div></Draggable>
          <EasybaseProvider ebconfig={ebconfig}>

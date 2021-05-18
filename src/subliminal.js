@@ -5,6 +5,7 @@ class Subliminal extends React.Component{
     constructor(){
         super()
         this.state={
+            name: "subliminal",
             randomItem:'',
             isVisible: false,
             count: 0
@@ -18,6 +19,7 @@ class Subliminal extends React.Component{
     )
   
     componentDidMount(){
+        this.props.firstOpen(this.state.name)
         this.interval = setInterval(() => {
             this.setState({ isVisible: true})
             this.setState(prevState => {
@@ -31,6 +33,11 @@ class Subliminal extends React.Component{
     }
     componentWillUnmount(){
         this.interval && clearInterval(this.interval)
+
+            this.props.firstOpen(this.state.name)
+            
+    
+
         
     }
   

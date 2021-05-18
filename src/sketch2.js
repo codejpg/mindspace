@@ -8,6 +8,7 @@ class sketch2 extends React.Component {
   constructor(props) {
     super(props)
     this.state = ({
+      name: "sketch",
       klicked: false,
       pressed: false,
       brushColor: "#000000",
@@ -17,7 +18,11 @@ class sketch2 extends React.Component {
       height: 0
     })
   }
-  
+  componentDidMount(){
+    this.props.firstOpen(this.state.name)
+    
+
+}
   
   render() {
  

@@ -15,6 +15,7 @@ function Login(props) {
             <img src= {Logo} width="300px"></img>
                 <p>Bitte gebe deinen Zugangscode ein.</p>
                 <input autocomplete="off" id="codeInput" type="text" placeholder="Code eingeben"></input>
+                <input autocomplete="off" id="nameInput" type="text" placeholder="Name"></input>
                 <button id="codeButton" onClick={props.onClick}>bestätigen</button>
             </div>
            
