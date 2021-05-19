@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-var listOfImages =[];
+var listOfImages = [];
 
-class Kunst extends React.Component{
-    constructor(props){
+class Kunst extends React.Component {
+    constructor(props) {
         super(props)
     }
     importAll(r) {
@@ -12,26 +12,27 @@ class Kunst extends React.Component{
         return test
     }
     componentWillMount() {
-       
+
         listOfImages = this.importAll(require.context('./kunst/', false, /\.(png|jpe?g|svg)$/));
 
     }
-    render(){
+
+    render() {
         var code = this.props.getCode();
-        var sketches = this.props.getSketches();
+        var sketches = this.props.getImages();
         console.log(sketches)
-        return(
-          <div className="kunstOrdner">
-              {
-                sketches.map((image, key) => (
-                    <img src={`data:image/jpeg;base64,${image}`} />
-                     // (image, index) =>  image.default.includes(code) ?  <img key={index} src={image.default} alt="info"></img> : null
-                     //(image, index) =>  image.default.includes(code) ?  <img key={index} src="data:image/png;base64,"{} alt="info"></img> : null
-                    
-                ))}
-              
-              
-          </div>
+        return (
+            <div className={this.props.className} >
+                {
+                    sketches.map((image, key) => (
+                        <img src={`data:image/jpeg;base64,${image}`} />
+                        // (image, index) =>  image.default.includes(code) ?  <img key={index} src={image.default} alt="info"></img> : null
+                        //(image, index) =>  image.default.includes(code) ?  <img key={index} src="data:image/png;base64,"{} alt="info"></img> : null
+
+                    ))}
+
+
+            </div>
         )
     }
 }

@@ -87,6 +87,70 @@
 
 }
 
+.photoPopUp {
+    position: absolute;
+    top: 20%;
+    right: 40%;
+    width: 640px;
+    height: 510px;
+    padding-left: 70px;
+    margin: 0;
+    background: rgb(238, 237, 237);
+    border: solid 0.5px grey;
+    border-radius: 3px;
+    -webkit-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    -moz-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    overflow: hidden;
+
+}
+
+.photoPopUp #modalTopBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(216, 214, 214);
+    border-bottom: solid rgb(34, 34, 34)y;
+    text-align: center;
+}
+
+.sketchPopUp {
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 10%;
+    bottom: 10%;
+    margin: 40 0 0 40;
+    padding: 0 40px 0 20px;
+    background: rgb(238, 237, 237);
+    border: solid 0.5px grey;
+    border-radius: 3px;
+    -webkit-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    -moz-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    overflow: hidden;
+
+}
+
+.sketchPopUp #modalTopBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(216, 214, 214);
+    border-bottom: solid rgb(34, 34, 34)y;
+    text-align: center;
+}
+
 .popup #modalTopBar {
     position: absolute;
     top: 0;
@@ -197,21 +261,25 @@
 }
 
 .closeBtnEck {
-    background-color: #828282;
-    border: solid 0.5px black;
-    color: white;
+    background-color: white;
+    border-radius: 1px;
+    border: solid 0.5px rgb(28, 28, 28);
+    color: rgb(27, 27, 27);
     padding: 5px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 12pt;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 5px;
+    right: 5px;
 }
 
+.closeBtnEck:hover {
+    background-color: #e18e8d;
+}
 
 
 .progress {
@@ -251,15 +319,55 @@
 
 }
 
+.fotoScrollDiv {
+    background: white;
+    position: absolute;
+    width: 720px;
+    height: 600px;
+    right: 10%;
+    border: solid 1px;
+    border-radius: 1px;
+
+    -webkit-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    ;
+    -moz-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    ;
+    box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    ;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-color: red;
+}
+
+.fotoScrollDiv img {
+    margin: 200px;
+}
+
+.fotoScrollDiv #modalTopBar {
+    position: fixed;
+    /* Set the navbar to fixed position */
+    top: 0;
+    /* Position the navbar at the top of the page */
+    width: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(216, 214, 214);
+    border-bottom: solid rgb(34, 34, 34)y;
+    text-align: center;
+}
+
 .scrollDiv {
     background: white;
     position: absolute;
     left: 20%;
     right: 20%;
     top: 10%;
-    bottom: 10%;
-    margin: 40 0 0 40;
-    padding: 0 40px 0 20px;
+
     border: solid 1px;
     border-radius: 1px;
     -webkit-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
@@ -278,7 +386,11 @@
 
 
 .scrollDiv #modalTopBar {
-    position: absolute;
+    position: fixed;
+    /* Set the navbar to fixed position */
+    top: 0;
+    /* Position the navbar at the top of the page */
+    width: 100%;
     top: 0;
     left: 0;
     width: 100%;
@@ -294,21 +406,83 @@
 
 }
 
+.kunstOrdner {
+    background-color: darkgrey;
+    margin: 0
+}
+
+.fotoOrdner {
+    background-color: black;
+
+}
+
+.fotoOrdner img {
+    background-color: black;
+    margin: 30px;
+
+}
+
 .saveButton {
-    background-color: #e18e8d;
     position: fixed;
-    left: 500;
-    bottom: 5px;
-    border: solid 0.5px rgba(0, 0, 0, 0.466);
-    color: white;
+    left: 15px;
+    bottom: 100px;
     padding: 20px, 10px, 20px, 10PX;
     text-align: center;
     vertical-align: center;
     text-decoration: none;
     display: inline-block;
-    width: 100px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    transition: 0.5s;
+}
 
+.löschenButton {
+    position: fixed;
+    left: 10px;
+    bottom: 15px;
+
+    padding: 20px, 10px, 20px, 10PX;
+    text-align: center;
+    vertical-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    transition: 0.5s;
+}
+
+.aufnehmenButton {
+    position: fixed;
+    left: 13px;
+    bottom: 180px;
+
+    padding: 20px, 10px, 20px, 10PX;
+    text-align: center;
+    vertical-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    transition: 0.5s;
+}
+
+.saveButton:hover,
+.löschenButton:hover,
+.aufnehmenButton:hover {
+    background: rgb(81, 81, 81);
+}
+
+.filterEffekte {
+    position: fixed;
+    left: 10px;
+    top: 40px;
+    padding: 20px, 10px, 20px, 10PX;
+    font-size: 7pt;
+    line-height: 16pt;
+}
+
+.filterEffekte div:hover {
+    background: rgba(154, 186, 232, 0.551);
 }
 
 .settingsPopup {

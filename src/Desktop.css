@@ -2,10 +2,16 @@
   --base: $primary;
 }
 
+@font-face {
+  font-family: AndaleMono;
+  src: url(./fonts/AndaleMono.ttf);
+}
+
+
 html,
 body {
 
-  font-family: Bitwise;
+  font-family: AndaleMono;
 
   color: rgb(50, 50, 50);
   -ms-user-select: None;
@@ -42,7 +48,7 @@ body {
 
 @font-face {
   font-family: Bitwise;
-  src: url(./fonts/AndaleMono.ttf);
+  src: url(./fonts/Bitwise.ttf);
 }
 
 .folder img {
@@ -64,19 +70,45 @@ body {
 
 .folderWrapper img {
   width: 75px;
-  transition: 1s;
+
 }
 
+.folderWrapper img:hover {
+  transition: opacity 3s ease-in-out;
+
+}
+
+
+
 .folderWrapper p {
-  font-family: Bitwise;
+  font-family: AndaleMono;
   font-size: 14pt;
   text-transform: uppercase;
+  text-align: center;
+
+
+}
+
+.folderImage {
+  transition: 2s;
+}
+
+.folderImage:hover {
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+
+}
+
+.folderHoverImage {
+  opacity: 0;
 
 }
 
 .folderWrapper {
 
-
+  clear: left;
   text-align: center;
   padding-top: 20%;
   height: 100px;
@@ -85,8 +117,16 @@ body {
 }
 
 .folderWrapper div {
+
   padding-top: 20%;
 
+}
+
+.folderWrapper div p {
+  display: block;
+  text-align: center;
+  clear: left;
+  margin: auto;
 }
 
 .folderWrapperWrapper {
@@ -95,6 +135,7 @@ body {
   grid-template-rows: auto auto auto auto auto;
   grid-auto-flow: column;
   grid-gap: 80px;
+
 }
 
 .sketchWrap {
@@ -136,7 +177,7 @@ code {
 .topBar {
   position: absolute;
   display: grid;
-  grid-template-columns: 100px 100px auto 20px 120px 200px;
+  grid-template-columns: 100px 100px auto auto 200px;
   grid-template-rows: 100%;
   top: 0;
   right: 0;
@@ -214,6 +255,17 @@ code {
   overflow: hidden;
 }
 
+#nameChangePopup #modalTopBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background-color: rgb(216, 214, 214);
+  border-bottom: solid rgb(34, 34, 34)y;
+  text-align: center;
+}
+
 #settingsPopup #modalTopBar {
   position: absolute;
   top: 0;
@@ -237,6 +289,7 @@ code {
 
 ::-webkit-scrollbar {
   width: 20px;
+
 }
 
 /* Track */
@@ -259,8 +312,8 @@ code {
 
 .settingsBtn {
 
-  width: 20px;
-  height: 20px;
+  width: 19px;
+  height: 19px;
   margin-top: 2px;
 }
 
@@ -280,23 +333,32 @@ select:focus {
   outline: none;
 }
 
-#nameDisplay {
-  position: relative;
-  display: inline-block;
+.nameDisplay {
+  grid-column: 3;
+  justify-self: end;
   height: 30px;
-  min-width: 100px;
+
   margin-top: 5px;
   padding: 16px 16px 10px 16px;
   font-weight: 600;
 
 
+  height: 24px;
+  text-align: right;
+  vertical-align: center;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .dropdown-content {
+
+  left: auto;
+  right: 200px;
+  margin-right: -20px;
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 100px;
   padding: 12px 16px;
   margin-top: 7px;
   z-index: 100;
@@ -305,7 +367,7 @@ select:focus {
   box-shadow: 0.6rem 0.6rem 0 rgba(0, 0, 0, 0.133);
 }
 
-#nameDisplay:hover .dropdown-content {
+.nameDisplay:hover .dropdown-content {
   display: block;
 }
 
@@ -352,4 +414,32 @@ select:focus {
   box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
   transform: translate(-0.4rem, -0.4rem);
 
+}
+
+.rglBtn {
+
+  width: 300px;
+  height: 70px;
+  font-size: 12pt;
+  background-color: #ffffff7b;
+  border: 1px solid black;
+  box-shadow: 0 0 0 black;
+  transition: all 0.2s;
+  margin-top: 35px;
+  margin-bottom: 60px;
+  padding: 2% 15%;
+  margin-left: 10%;
+  font-family: AndaleMono;
+
+  font-size: 20pt;
+  text-align: center;
+  box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
+  transform: translate(-0.4rem, -0.4rem);
+
+}
+
+.rglBtn:hover,
+.rglBtn:active {
+  box-shadow: 0 0 0 black;
+  transform: translate(0, 0);
 }
