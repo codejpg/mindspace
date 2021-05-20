@@ -25,7 +25,7 @@ class Kunst extends React.Component {
             <div className={this.props.className} >
                 {
                     sketches.map((image, key) => (
-                        <img src={`data:image/jpeg;base64,${image}`} />
+                        <img key={key} src={`data:image/jpeg;base64,${image}`} />
                         // (image, index) =>  image.default.includes(code) ?  <img key={index} src={image.default} alt="info"></img> : null
                         //(image, index) =>  image.default.includes(code) ?  <img key={index} src="data:image/png;base64,"{} alt="info"></img> : null
 

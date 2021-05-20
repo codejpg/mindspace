@@ -520,8 +520,8 @@
 
 .folderWrapper[name="Einstellungen"] {
     position: absolute;
-    top: 0;
-    right: 200px;
+    top: 3px;
+    right: 210px;
 
     height: 30px;
     padding: 0;
@@ -530,7 +530,7 @@
 }
 
 .folderWrapper[name="Einstellungen"] img {
-    width: 23px;
+    width: 22px;
 
 }
 

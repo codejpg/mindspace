@@ -20,10 +20,8 @@ class sketch2 extends React.Component {
       clear: false
     })
   }
-  componentDidMount() {
+  componentWillUnmount() {
     this.props.firstOpen(this.state.name)
-
-
   }
 
   render() {

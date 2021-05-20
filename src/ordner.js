@@ -6,90 +6,50 @@ import Draggable from 'react-draggable'
 //import Modal from "./Modal";
 import Modal from 'react-modal';
 import "./Modal.css";
+import { ThemeConsumer } from "styled-components"
+var listOfImages = [];
 
 class Ordner extends React.Component {
-    constructor(props){
-      super(props);
-        this.state = {
-    
-            name: "ordner",
-            showModal: false,
-            dataModal: {
-              name: "",
-              content: "",
-              image: ''
-            },
-            modals: [
-                { id: 1, name: "Polycon", className: "popup", show: false, isActive: false, content: <Dum/>, image: FolderImage,  hoverImage: FolderImageHover},
-                { id: 2, name: "Ordner", className: "popup", show: false, isActive: false, content: <Dum/>, image: FolderImage, hoverImage: FolderImageHover },
-             
-              ],
-        }
-       
-        console.log(this.state.modals)
-      }
-      componentDidMount(){
-        this.props.firstOpen(this.state.name)
-        
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      catOrDog: this.props.katzoderhund(),
     }
-      getModal = data => {
-        this.setState({ showModal: true, dataModal: data });
+  }
 
-        
-      };
-    
-      hideModal = () => {
-        this.setState({ showModal: false});
-      };
-     
-  
-  
-  
+
+
+  importAll(r) {
+    var test = r.keys().map(r);
+    console.log(test)
+    return test
+  }
+  componentWillMount() {
+    console.log(this.state.catOrDog)
+    if (this.props.katzoderhund() == "Katzen") {
+      listOfImages = this.importAll(require.context('./img/katzen/', true, /\.(png|jpe?g|svg)$/));
+    }
+  }
+
   render() {
-    
-   
     return (
-  
-  <div>
-    
-     <div className="Wrapper">
-       
-        { this.state.modals.map((data, key) => (
-         
-    
-          <div key={data.id} className="folder">
-              <div onClick={() => this.getModal(data)}>
-              <img src={data.image}
-                    onMouseEnter={e => (e.currentTarget.src = data.hoverImage)}
-                    onMouseOut={e => (e.currentTarget.src = data.image)}
-                  />
-                  <p>{data.name}</p></div>
-          </div> 
-        ))}
-  </div>
+      <div className="kunstOrdner">
+        {
 
-      
-  <Modal
-  
-           isOpen={this.state.showModal}
-           onRequestClose={()=>this.hideModal}
-           contentLabel="Inside Ordner"
-           className="Modal"
-           overlayClassName="Overlay"
-           >
-    
-               <div id="modalTopBar"> <button className = "closeBtn" onClick={this.hideModal}></button>
-          </div>
+          listOfImages.map(
+            (image, index) => <img key={index} src={image.default} alt="info"></img>
 
-           <div>I am a modal</div>
-           {this.state.dataModal.content}
-         </Modal>
-      
+          )
+        }
+
+
       </div>
-  
-  
-  
-  )}}
+    )
+  }
+}
 
-  export default Ordner
+
+
+
+
+export default Ordner

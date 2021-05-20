@@ -64,7 +64,7 @@ import { useEffect } from 'react';
 import ebconfig from './ebconfig';
 import { Checkbox } from "@material-ui/core";
 
-
+var preCodes = ["0000", "1111", "2222", "1212"];
 
 
 
@@ -87,6 +87,8 @@ class App extends React.Component {
       id: 0,
       code: "0000",
       userName: "User",
+      favTier: 0,
+      favColor: 0,
       clicks: 0,
       influencePoints: 0,
       progressLupe: false,
@@ -120,15 +122,15 @@ class App extends React.Component {
       month: today.getMonth(),
       wochentag: weekday[today.getDay()],
       displayText: "",
-      isLoggedIn: false,
+      isLoggedIn: true,
       addData: false,
       login: "",
       post: [
         //{ id: 1, name: "Polycon", className: "popup2", show: true, nameShow: false, isActive: false, content: <Dum firstOpen= {this.firstOpen}/>, image: PolyImage,  hoverImage: PolyImageHover},
-        { id: 1, name: "Ordner", className: "popup2", show: true, nameShow: false, isActive: false, content: <Ordner firstOpen={this.firstOpen} />, image: FolderImage, hoverImage: FolderImageHover },
+        { id: 1, name: "Ordner", className: "fotoScrollDiv", show: true, nameShow: false, isActive: false, content: <Ordner firstOpen={this.firstOpen} getCode={this.getCode} getImages={this.getImages} katzoderhund={this.catOrDog} className="fotoOrdner" />, image: FolderImage, hoverImage: FolderImageHover },
         //{ id: 3, name: "Spiel", className: "popup2", show: true, nameShow: false, isActive: false, content: <PolySketch/>, image: GameImage, hoverImage: GameImageHover },
-        { id: 2, name: "Fotoautomat", className: "photoPopUp", show: true, nameShow: true, isActive: false, content: <PhotoBooth firstOpen={this.firstOpen} saveImage={this.savePhoto} />, image: PhotoAutomatImage, hoverImage: PhotoAutomatImageHover },
-        { id: 3, name: "Skizzenblock", className: "sketchPopUp", show: true, nameShow: true, isActive: false, content: <Sketch2 firstOpen={this.firstOpen} getCode={this.getCode} saveImage={this.saveSketch} />, image: DrawImage, hoverImage: DrawImageHover },
+        { id: 2, name: "Fotoautomat", className: "photoPopUp", show: true, nameShow: false, isActive: false, content: <PhotoBooth firstOpen={this.firstOpen} saveImage={this.savePhoto} />, image: PhotoAutomatImage, hoverImage: PhotoAutomatImageHover },
+        { id: 3, name: "Skizzenblock", className: "sketchPopUp", show: true, nameShow: false, isActive: false, content: <Sketch2 firstOpen={this.firstOpen} getCode={this.getCode} saveImage={this.saveSketch} />, image: DrawImage, hoverImage: DrawImageHover },
         //{ id: 5, name: "Progress", className: "progress", show: true, nameShow: false, isActive: false, content: <Progress/>, image: ProgressImage, hoverImage: ProgressImageHover },
         { id: 4, name: "Einstellungen", className: "settingsPopup", show: true, nameShow: false, isActive: false, content: <Settings firstOpen={this.firstOpen} getBgColor={this.getBackgroundColor} />, image: SettingsIcon, hoverImage: SettingsIcon },
         //{ id: 7, name: "Lupe", className: "popup2", show: true, nameShow: false, isActive: false, content: <Lupe firstOpen= {this.firstOpen}/>,  image: LupeImage,  hoverImage: LupeImageHover},
@@ -155,6 +157,7 @@ class App extends React.Component {
     this.getSubNumber = this.getSubNumber.bind(this);
     this.showImages = this.showImages.bind(this);
     this.showKunst = this.showKunst.bind(this);
+    this.catOrDog = this.catOrDog.bind(this);
 
 
 
@@ -206,8 +209,9 @@ class App extends React.Component {
   handleLoginClick() {
     var input = document.getElementById('codeInput').value.trim();
     var input2 = document.getElementById('nameInput').value.trim();
+    var n = preCodes.includes(input);
     // if (!input.length) { evt.preventDefault(); }
-    if (!input.length || !input2.length) return false;  // cancel click
+    if (!input.length || !input2.length || !n) return false;  // cancel click
     this.setState({
 
       code: (document.getElementById('codeInput').value),
@@ -259,10 +263,17 @@ class App extends React.Component {
     console.log("influencePoints: ", this.state.influencePoints)
   }
 
+  catOrDog = () => {
+    return this.state.catOrDog
+  }
+
   saveQuizData = (data) => {
     this.setState({
       influencePoints: data.qID,
-      quizProgress: data.qID
+      quizProgress: data.qID,
+      favColor: data.chosenColor,
+      favTier: data.catOrDog
+
     })
     console.log("influencePoints: ", this.state.influencePoints)
   }
@@ -338,6 +349,13 @@ class App extends React.Component {
   getPhotos = () => {
     return this.state.takenPhotos
   }
+
+  importAll(r) {
+    var test = r.keys().map(r);
+    console.log(test)
+    return test
+  }
+
   firstOpen = (val) => {
     if (val == "lupe" && this.state.progressLupe == false) {
       console.log("Progress:", this.state.progressPoints)
@@ -420,7 +438,7 @@ class App extends React.Component {
           </div>
 
         </div>
-        {this.state.progressPoints >= 5 ? <EndQuiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData} loadImgNumber={this.getSubNumber} showHiddenProgram={this.showHiddenProgram} code={this.state.code} name={this.state.userName} influencePoints={this.state.influencePoints} sketchedImages={this.getSketches} /> : null}
+        {this.state.progressPoints >= 2 ? <EndQuiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData} loadImgNumber={this.getSubNumber} showHiddenProgram={this.showHiddenProgram} code={this.state.code} name={this.state.userName} influencePoints={this.state.influencePoints} sketchedImages={this.getSketches} katzoderhund={this.state.catOrDog} fotos={this.getPhotos} /> : null}
         <StartQuiz name={this.state.userName} saveFunction={this.saveStartQuizData} />
 
         <Subliminal image={subimage} firstOpen={this.firstOpen}></Subliminal>

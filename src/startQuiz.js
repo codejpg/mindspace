@@ -15,21 +15,38 @@ class StartQuiz extends React.Component {
             frage: fragen[1],
             content1: antworten1[1],
             content2: antworten2[1],
-            over: false
+            over: false,
+            chosenColor: 0,
+            catOrDog: 0
         }
         this.handleClick = this.handleClick.bind(this)
         this.finish = this.finish.bind(this)
 
     }
     handleClick(event) {
+
+        if (this.state.qID == 1) {
+            const id = event.target.id;
+            this.setState({
+                catOrDog: id
+            })
+
+        } if (this.state.qID == 3) {
+            const id = event.target.id;
+            this.setState({
+                chosenColor: id
+            })
+        }
+
         this.setState({
             qID: this.state.qID + 1,
             aID: event.target.id,
             frage: fragen[this.state.qID],
             content1: antworten1[this.state.qID],
             content2: antworten2[this.state.qID],
-            over: this.state.qID > fragen.length - 1
+            over: this.state.qID > fragen.length - 1,
         })
+
         console.log("Q ID: " + this.state.qID)
     }
     componentWillUnmount() {
@@ -123,15 +140,15 @@ class StartQuiz extends React.Component {
 
                             return (<QuizStyle>
                                 <div className="item-frage"><Frage>Was magst du lieber?</Frage></div>
-                                <div className="item-a"><button className="rglBtn" id="1" onClick={this.handleClick}>Hunde</button></div>
-                                <div className="item-b"><button className="rglBtn" id="2" onClick={this.handleClick}>Katzen</button></div>
+                                <div className="item-a"><button className="rglBtn" id="Hunde" onClick={this.handleClick} value={"Hunde"}>Hunde</button></div>
+                                <div className="item-b"><button className="rglBtn" id="Katzen" onClick={this.handleClick} value={"Katzen"}>Katzen</button></div>
                             </QuizStyle>
                             )
 
                         } else if (this.state.qID == 2) {
                             return (<QuizStyle>
                                 <div className="item-frage"><Frage>Was magst du lieber?</Frage></div>
-                                <div className="item-a"><button className="rglBtn" utton id="1" onClick={this.handleClick}>rot</button></div>
+                                <div className="item-a"><button className="rglBtn" id="1" onClick={this.handleClick}>rot</button></div>
                                 <div className="item-b"><button className="rglBtn" id="2" onClick={this.handleClick}>blau</button></div>
                             </QuizStyle>)
 
@@ -139,17 +156,23 @@ class StartQuiz extends React.Component {
                         else if (this.state.qID == 3) {
                             return (<QuizStyle>
                                 <div className="item-frage"><Frage>{this.state.frage}</Frage></div>
-                                <div className="item-a"><button className="rglBtn" id="1" onClick={this.handleClick}>{this.state.content1}</button></div>
-                                <div className="item-b"><button className="rglBtn" id="2" onClick={this.handleClick}>{this.state.content2}</button></div>
+                                <div id="grau" className="colorDiv" onClick={this.handleClick}></div>
+                                <div id="hellgelb" className="colorDiv" onClick={this.handleClick}></div>
+                                <div id="rosa" className="colorDiv" onClick={this.handleClick}></div>
+                                <div id="schwarz" className="colorDiv" onClick={this.handleClick}></div>
+                                <div id="blau" className="colorDiv" onClick={this.handleClick}></div>
+                                <div id="rot" className="colorDiv" onClick={this.handleClick}></div>
+                                <div id="grün" className="colorDiv" onClick={this.handleClick}></div>
+                                <div id="gelb" className="colorDiv" onClick={this.handleClick}></div>
                             </QuizStyle>)
 
 
                         } else if (this.state.qID == 4) {
-                            return (<QuizStyle><div className="item-end">
-                                Super, jetzt gehts los!
-                                    <div className="item-b"><button className="rglBtn" id="2" onClick={this.finish}>Start</button></div>
-
-                            </div></QuizStyle>);
+                            return (<div className="fullScreenEinleitung">
+                                <div className="welcomeBox">
+                                    <p>Super, jetzt gehts los!</p>
+                                    <button id="startButton" onClick={this.finish}>Start</button>
+                                </div> </div>);
                         }
 
                     })()}
