@@ -5,6 +5,7 @@ import dist from 'react-p5-wrapper';
 import SpeichernIcon from './img/mindspace-56.svg'
 import LoeschenIcon from './img/mindspace-57.svg'
 
+
 class sketch2 extends React.Component {
   constructor(props) {
     super(props)
@@ -17,7 +18,8 @@ class sketch2 extends React.Component {
       cnv: {},
       width: 0,
       height: 0,
-      clear: false
+      clear: false,
+
     })
   }
   componentWillUnmount() {
@@ -28,16 +30,18 @@ class sketch2 extends React.Component {
 
     const setup = (p5, canvasParentRef) => {
 
-      this.state.cnv = p5.createCanvas(p5.windowWidth / 1.2, p5.windowHeight / 1.3).parent(canvasParentRef)
+      this.state.cnv = p5.createCanvas(p5.windowWidth / 2.5, p5.windowHeight / 1.3).parent(canvasParentRef)
 
       p5.background(255)
       this.state.cnv.id('canvas');
+
       this.setState({
         width: p5.windowWidth,
         height: p5.windowHeight
       });
       console.log(this.state.width)
       p5.rectMode("CENTER");
+
     }
 
     const draw = p5 => {
@@ -55,6 +59,7 @@ class sketch2 extends React.Component {
       p5.rect(0, 0, 50, p5.height);
       p5.fill(0)
       p5.textSize(12);
+      p5.textFont("Andale Mono")
       p5.text("Farbe", 2, p5.height / 25)
       p5.text("Pinsel", 2, p5.height / 1.8)
       p5.strokeWeight(1);

@@ -90,7 +90,7 @@ class PhotoBooth extends React.Component {
             else if (this.state.filter == 4) {
 
                 p5.tint(255, 25, 255);
-                p5.filter(p5.POSTERIZE, 10);//posterize
+                p5.filter(p5.POSTERIZE, 7);//posterize
             }
             else if (this.state.filter == 5) {
                 p5.tint(255, 255, 255);
@@ -175,17 +175,17 @@ class PhotoBooth extends React.Component {
                 <img className="saveButton" src={SpeichernIcon} onClick={speichern} />
                 <div className="filterEffekte">
                     <b>Filter:</b>
-                    <div id="1" onClick={this.filterer}>Threshold</div>
-                    <div id="2" onClick={this.filterer}>Sepia</div>
-                    <div id="3" onClick={this.filterer}>goth</div>
+                    <div id="1" onClick={this.filterer}>threshold</div>
+                    <div id="2" onClick={this.filterer}>sepia</div>
+                    <div id="3" onClick={this.filterer}>goth tint</div>
                     <div id="4" onClick={this.filterer}>posterize</div>
-                    <div id="5" onClick={this.filterer}>Invert</div>
+                    <div id="5" onClick={this.filterer}>invert</div>
 
                 </div>
 
             </div>
         )
-    }
+    } x
 }
 
 export default PhotoBooth

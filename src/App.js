@@ -5,23 +5,27 @@ import './Desktop.css'
 import Dropdown from 'react-dropdown';
 import EndQuiz from './endQuiz'
 import StartQuiz from './startQuiz'
+import Review from './filmreview'
 
 
 import FolderImage from './img/mindspace-11.svg'
 import GameImage from './img/MindSpaceRGB neu-13.svg'
-import KunstImage from './img/MindSpaceRGB-09.svg'
+import PhotoImage from './img/mindspace-09.svg'
+import KunstImage from './img/mindspace-61.svg'
 import PolyImage from './img/MindSpaceRGB neu-12.svg'
-import DrawImage from './img/MindSpaceRGB neu-10.svg'
+import DrawImage from './img/mindspace-10.svg'
 import ProgressImage from './img/MindSpaceRGB neu-14.svg'
 import QuizImage from './img/MindSpaceRGB-21.svg'
 import EndeImage from './img/mindspace-48.svg'
 import LupeImage from './img/mindspace-53.svg'
 import TextImage from './img/mindspace-55.svg'
-import PhotoAutomatImage from './img/fotoautomat-59.svg'
+import PhotoAutomatImage from './img/fotoautomatt-63.svg'
+import GeneratorImage from './img/AUTOMAT-65.svg'
 
-import FolderImageHover from './img/MindSpaceRGB neu-18.svg'
+import FolderImageHover from './img/mindspace-18.svg'
 import GameImageHover from './img/MindSpaceRGB-16.svg'
-import KunstImageHover from './img/mindspace-47.svg'
+import PhotoImageHover from './img/mindspace-63.svg'
+import KunstImageHover from './img/mindspace-60.svg'
 import PolyImageHover from './img/MindSpaceRGB neu-17.svg'
 import DrawImageHover from './img/MindSpaceRGB neu-19.svg'
 import ProgressImageHover from './img/MindSpaceRGB-15.svg'
@@ -29,9 +33,11 @@ import QuizImageHover from './img/MindSpaceRGB-36.svg'
 import EndeImageHover from './img/mindspace-50.svg'
 import LupeImageHover from './img/mindspace-52.svg'
 import TextImageHover from './img/mindspace-54.svg'
-import PhotoAutomatImageHover from './img/fotoautomat-60.svg'
+import PhotoAutomatImageHover from './img/fotoautomatt-64.svg'
+import GeneratorImageHover from './img/AUTOMAT-67.svg'
 
-import SettingsIcon from './img/MindSpaceRGB-22.svg'
+import SettingsIcon from './img/mindspace-20.svg'
+import SettingsIconHover from './img/mindspace_-20.svg'
 
 import SubImage from './img/sub-1.svg'
 
@@ -87,7 +93,7 @@ class App extends React.Component {
       id: 0,
       code: "0000",
       userName: "User",
-      favTier: 0,
+      favTier: "keins",
       favColor: 0,
       clicks: 0,
       influencePoints: 0,
@@ -132,12 +138,12 @@ class App extends React.Component {
         { id: 2, name: "Fotoautomat", className: "photoPopUp", show: true, nameShow: false, isActive: false, content: <PhotoBooth firstOpen={this.firstOpen} saveImage={this.savePhoto} />, image: PhotoAutomatImage, hoverImage: PhotoAutomatImageHover },
         { id: 3, name: "Skizzenblock", className: "sketchPopUp", show: true, nameShow: false, isActive: false, content: <Sketch2 firstOpen={this.firstOpen} getCode={this.getCode} saveImage={this.saveSketch} />, image: DrawImage, hoverImage: DrawImageHover },
         //{ id: 5, name: "Progress", className: "progress", show: true, nameShow: false, isActive: false, content: <Progress/>, image: ProgressImage, hoverImage: ProgressImageHover },
-        { id: 4, name: "Einstellungen", className: "settingsPopup", show: true, nameShow: false, isActive: false, content: <Settings firstOpen={this.firstOpen} getBgColor={this.getBackgroundColor} />, image: SettingsIcon, hoverImage: SettingsIcon },
+        { id: 4, name: "Einstellungen", className: "settingsPopup", show: true, nameShow: false, isActive: false, content: <Settings firstOpen={this.firstOpen} getBgColor={this.getBackgroundColor} />, image: SettingsIcon, hoverImage: SettingsIconHover },
         //{ id: 7, name: "Lupe", className: "popup2", show: true, nameShow: false, isActive: false, content: <Lupe firstOpen= {this.firstOpen}/>,  image: LupeImage,  hoverImage: LupeImageHover},
         { id: 5, name: "Notizen", className: "progress ", show: true, nameShow: true, isActive: false, content: <Notiz saveNotes={this.saveNotes} getNotes={this.getNotes} />, image: ProgressImage, hoverImage: ProgressImageHover },
-        { id: 6, name: "Text", className: "popup2 ", show: true, nameShow: false, isActive: false, content: <Notiz firstOpen={this.firstOpen} saveNotes={this.saveNotes} getNotes={this.getNotes} />, image: TextImage, hoverImage: TextImageHover },
+        { id: 6, name: "Generator", className: "popup3 ", show: true, nameShow: false, isActive: false, content: <Review firstOpen={this.firstOpen} saveNotes={this.saveNotes} getNotes={this.getNotes} />, image: GeneratorImage, hoverImage: GeneratorImageHover },
         { id: 7, name: "Kunst", className: "scrollDiv ", show: false, nameShow: true, isActive: false, content: <Kunst firstOpen={this.firstOpen} getCode={this.getCode} getImages={this.getSketches} className="kunstOrdner" />, image: KunstImage, hoverImage: KunstImageHover },
-        { id: 8, name: "Fotos", className: "fotoScrollDiv ", show: false, nameShow: true, isActive: false, content: <Kunst firstOpen={this.firstOpen} getCode={this.getCode} getImages={this.getPhotos} className="fotoOrdner" />, image: KunstImage, hoverImage: KunstImageHover },
+        { id: 8, name: "Fotos", className: "fotoScrollDiv ", show: false, nameShow: true, isActive: false, content: <Kunst firstOpen={this.firstOpen} getCode={this.getCode} getImages={this.getPhotos} className="fotoOrdner" />, image: PhotoImage, hoverImage: PhotoImageHover },
         //{ id: 7, name: "Quiz", className: "popup2", show: true, nameShow: false, isActive: false, content: <Quiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData} loadImgNumber={this.getSubNumber} showHiddenProgram={this.showHiddenProgram}></Quiz>, image: QuizImage, hoverImage: QuizImageHover },
         { id: 9, name: "Ergebnis", className: "popup2 ", show: false, nameShow: true, isActive: false, content: <Notiz saveNotes={this.saveNotes} getNotes={this.getNotes} />, image: EndeImage, hoverImage: EndeImageHover },
 
@@ -258,21 +264,21 @@ class App extends React.Component {
   saveStartQuizData = (data) => {
     this.setState({
       influencePoints: data.qID,
-      quizProgress: data.qID
+      quizProgress: data.qID,
+      favColor: data.chosenColor,
+      favTier: data.catOrDog
     })
     console.log("influencePoints: ", this.state.influencePoints)
   }
 
   catOrDog = () => {
-    return this.state.catOrDog
+    return this.state.favTier
   }
 
   saveQuizData = (data) => {
     this.setState({
       influencePoints: data.qID,
       quizProgress: data.qID,
-      favColor: data.chosenColor,
-      favTier: data.catOrDog
 
     })
     console.log("influencePoints: ", this.state.influencePoints)
@@ -421,7 +427,7 @@ class App extends React.Component {
       <div className="Desktop" style={{ backgroundColor: this.state.currentBgColor }}>
         <Login login={this.state.isLoggedIn} onClick={this.handleLoginClick}></Login>
         <div className="topBar">
-          <div><img src={Logo}></img></div>
+          <div className="logo"><img src={Logo}></img></div>
           <div></div>
           <div></div>
           <div class="dropdown-content">Name ändern</div>
@@ -438,7 +444,7 @@ class App extends React.Component {
           </div>
 
         </div>
-        {this.state.progressPoints >= 2 ? <EndQuiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData} loadImgNumber={this.getSubNumber} showHiddenProgram={this.showHiddenProgram} code={this.state.code} name={this.state.userName} influencePoints={this.state.influencePoints} sketchedImages={this.getSketches} katzoderhund={this.state.catOrDog} fotos={this.getPhotos} /> : null}
+        {this.state.progressPoints >= 4 ? <EndQuiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData} loadImgNumber={this.getSubNumber} showHiddenProgram={this.showHiddenProgram} code={this.state.code} name={this.state.userName} influencePoints={this.state.influencePoints} sketchedImages={this.getSketches} katzoderhund={this.state.catOrDog} fotos={this.getPhotos} /> : null}
         <StartQuiz name={this.state.userName} saveFunction={this.saveStartQuizData} />
 
         <Subliminal image={subimage} firstOpen={this.firstOpen}></Subliminal>
@@ -448,7 +454,7 @@ class App extends React.Component {
           bounds={{ top: -250, left: -500, right: 500, bottom: 250 }}>
           <div id="nameChangePopup">
             <div id="modalTopBar"><h1>Name ändern</h1>
-              <button className="closeBtn" onClick={this.toggleNameChangePopup}></button>
+              <button className="closeBtnEck" onClick={this.toggleNameChangePopup}></button>
             </div>
             <div className="content">
 

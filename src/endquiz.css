@@ -17,7 +17,7 @@
 }
 
 .box {
-    padding: 2%;
+
 
     background-color: #eef2f3;
     position: absolute;
@@ -26,7 +26,6 @@
     right: 20%;
     bottom: 20%;
     border: solid 1px grey;
-    padding: 60px;
     justify-content: center;
     align-content: center;
     box-shadow: 0.6rem 0.6rem 0 rgba(0, 0, 0, 0.366);
@@ -100,13 +99,16 @@
 }
 
 .colorDiv {
-    margin: 10%;
-    width: 80%;
-    height: 80%;
-    border: 5px solid transparent;
+    margin-top: 10%;
+    margin-left: 10%;
+    width: 15vh;
+    height: 15vh;
+    border: 1px solid rgba(0, 0, 0, 0.626);
+    padding: 4px;
 }
 
 .colorDiv:hover {
+    padding: 0;
     border: 5px solid rgba(123, 123, 123, 0.562)
 }
 

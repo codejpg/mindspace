@@ -25,15 +25,17 @@ class Ordner extends React.Component {
     return test
   }
   componentWillMount() {
-    console.log(this.state.catOrDog)
-    if (this.props.katzoderhund() == "Katzen") {
+    console.log("katz oder hund:" + this.state.catOrDog)
+    if (this.state.catOrDog == "Katzen") {
       listOfImages = this.importAll(require.context('./img/katzen/', true, /\.(png|jpe?g|svg)$/));
+    } else if (this.state.catOrDog == "Hunde") {
+      listOfImages = this.importAll(require.context('./img/hunde/', true, /\.(png|jpe?g|svg)$/));
     }
   }
 
   render() {
     return (
-      <div className="kunstOrdner">
+      <div className="tierFotoOrdner">
         {
 
           listOfImages.map(

@@ -17,7 +17,7 @@ class StartQuiz extends React.Component {
             content2: antworten2[1],
             over: false,
             chosenColor: 0,
-            catOrDog: 0
+            catOrDog: "none"
         }
         this.handleClick = this.handleClick.bind(this)
         this.finish = this.finish.bind(this)
@@ -25,7 +25,7 @@ class StartQuiz extends React.Component {
     }
     handleClick(event) {
 
-        if (this.state.qID == 1) {
+        if (this.state.qID <= 1) {
             const id = event.target.id;
             this.setState({
                 catOrDog: id
@@ -123,7 +123,7 @@ class StartQuiz extends React.Component {
             left: 0;
             right:0;
             color: #000000;
-            background-color: #dedddc;
+            background-color: #eef2f3;
             overflow: hidden;
             width: 100%;
             height: 100%;
@@ -148,8 +148,8 @@ class StartQuiz extends React.Component {
                         } else if (this.state.qID == 2) {
                             return (<QuizStyle>
                                 <div className="item-frage"><Frage>Was magst du lieber?</Frage></div>
-                                <div className="item-a"><button className="rglBtn" id="1" onClick={this.handleClick}>rot</button></div>
-                                <div className="item-b"><button className="rglBtn" id="2" onClick={this.handleClick}>blau</button></div>
+                                <div className="item-a"><button className="rglBtn" id="1" onClick={this.handleClick}>Gedichte</button></div>
+                                <div className="item-b"><button className="rglBtn" id="2" onClick={this.handleClick}>Filme</button></div>
                             </QuizStyle>)
 
                         }
