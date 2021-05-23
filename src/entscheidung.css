@@ -68,3 +68,21 @@
     right: 60px;
 
 }
+
+.auswertungBox {
+    position: fixed;
+    top: 20%;
+    left: 20%;
+    right: 20%;
+    bottom: 20%;
+    background-color: #eef2f3;
+    padding: 40px;
+    border: solid 0.5px grey;
+    border-radius: 3px;
+    -webkit-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    -moz-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+}

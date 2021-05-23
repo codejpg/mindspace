@@ -11,13 +11,23 @@ class StartQuiz extends React.Component {
         super(props)
         this.state = {
             visible: true,
-            qID: 1,
+            qID: 3,
             frage: fragen[1],
             content1: antworten1[1],
             content2: antworten2[1],
             over: false,
             chosenColor: 0,
-            catOrDog: "none"
+            catOrDog: "none",
+            colors: [
+                { id: 1, bgColor: "#eef2f3" },
+                { id: 2, bgColor: "#ffe7a0" },
+                { id: 3, bgColor: "#ffbeca" },
+                { id: 4, bgColor: "#0096d3" },
+                { id: 5, bgColor: "#dedddc" },
+                { id: 6, bgColor: "#afdcdc" },
+                { id: 7, bgColor: "#ffd900" },
+                { id: 8, bgColor: "#90bc9c" }
+            ],
         }
         this.handleClick = this.handleClick.bind(this)
         this.finish = this.finish.bind(this)
@@ -31,7 +41,13 @@ class StartQuiz extends React.Component {
                 catOrDog: id
             })
 
-        } if (this.state.qID == 3) {
+        }
+        if (this.state.qID == 3) {
+            console.log("yes")
+            const id = event.target.id;
+            this.props.getBgColor(this.state.colors[id].bgColor)
+        }
+        if (this.state.qID == 6) {
             const id = event.target.id;
             this.setState({
                 chosenColor: id
@@ -40,7 +56,7 @@ class StartQuiz extends React.Component {
 
         this.setState({
             qID: this.state.qID + 1,
-            aID: event.target.id,
+
             frage: fragen[this.state.qID],
             content1: antworten1[this.state.qID],
             content2: antworten2[this.state.qID],
@@ -155,7 +171,14 @@ class StartQuiz extends React.Component {
                         }
                         else if (this.state.qID == 3) {
                             return (<QuizStyle>
-                                <div className="item-frage"><Frage>{this.state.frage}</Frage></div>
+                                <div className="item-frage"><Frage>Wähle eine Farbe aus</Frage></div>
+                                {this.state.colors.map((data, key) => (
+                                    <div id={key} className="colorDiv" onClick={this.handleClick} style={{ background: data.bgColor }}></div>
+                                ))}
+                            </QuizStyle>)
+                        } else if (this.state.qID == 6) {
+                            return (<QuizStyle>
+                                <div className="item-frage"><Frage>Wähle eine Farbe aus</Frage></div>
                                 <div id="grau" className="colorDiv" onClick={this.handleClick}></div>
                                 <div id="hellgelb" className="colorDiv" onClick={this.handleClick}></div>
                                 <div id="rosa" className="colorDiv" onClick={this.handleClick}></div>

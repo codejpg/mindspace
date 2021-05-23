@@ -69,10 +69,6 @@ body {
   background: pink;
 }
 
-.folderWrapper img:hover {
-  transition: opacity 3s ease-in-out;
-
-}
 
 
 
@@ -85,13 +81,7 @@ body {
   margin-right: auto;
 }
 
-.folderImage:hover {
-  -webkit-transition: opacity 1s ease-in-out;
-  -moz-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
 
-}
 
 .folderHoverImage {
   opacity: 0;
@@ -142,15 +132,13 @@ body {
   height: 80%;
 }
 
-.kunstOrdner img {
-  width: 200px;
-  margin: 20px;
-}
+
 
 .inputStyle {
   position: "absolute";
   right: 10;
   top: 100;
+
 
 }
 

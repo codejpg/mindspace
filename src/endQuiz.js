@@ -3,9 +3,9 @@ import styled, { ThemeConsumer } from 'styled-components'
 import "./endquiz.css"
 import { EasybaseProvider, useEasybase } from 'easybase-react';
 import ebconfig from './ebconfig';
-let fragen = ["Wie gehts dir?", "Wähle ein Form aus.", "Wähle eine Farbe aus.", "Was ist die Durchschnittsthemperatur in Deutschland?", "frage4"]
-let antworten1 = ["0", "antwort1", "antwort3", "antwort5", "antwort7"]
-let antworten2 = ["0", "antwort2", "antwort4", "antwort6", "antwort8"]
+let fragen = ["Was ist die Durchschnittstemperatur in Deutschland?", "Wähle ein Form aus.", "Was magst du lieber?", "Wähle eins!", "Wähle:"]
+let antworten1 = ["0", "antwort1", "Im Grünen sein", "Apfel", "antwort7"]
+let antworten2 = ["0", "antwort2", "Auf der Couch entspannen", "Banane", "antwort8"]
 
 
 class EndQuiz extends React.Component {
@@ -16,19 +16,30 @@ class EndQuiz extends React.Component {
             subNumber: this.props.loadImgNumber(),
             subNumber2: "",
             influencePoints: this.props.influencePoints,
-            katzoderhund: this.props.katzoderhund,
+            katzoderhund: JSON.stringify(this.props.katzoderhund()),
             sketches: this.props.sketchedImages(),
             qID: 0,
             frage: fragen[0],
             content1: antworten1[0],
             content2: antworten2[0],
+            frame: {},
+            sliderValue: 1
 
         }
         this.handleClick = this.handleClick.bind(this)
+        this.endEndQuiz = this.endEndQuiz.bind(this)
+        this.handleSliderChange = this.handleSliderChange.bind(this)
 
 
     }
     handleClick(event) {
+        if (this.state.qID == 1) {
+            if (this.state.sliderValue > 14) {
+                this.setState(prevstate => ({
+                    influencePoints: prevstate.influencePoints + 1
+                }));
+            }
+        }
         if (this.state.qID == 2) {
             if (event.target.id == 1) {
                 this.setState(prevstate => ({
@@ -36,7 +47,34 @@ class EndQuiz extends React.Component {
                 }));
             }
         }
+        if (this.state.qID == 3) {
+            console.log(this.state.katzoderhund)
+            if (event.target.id == 1 && this.state.katzoderhund.includes("Hund") || event.target.id == 2 && this.state.katzoderhund.includes("Katze")) {
+                console.log("katzen oder hundemensch = influenced")
+                this.setState(prevstate => ({
+                    influencePoints: prevstate.influencePoints + 1
+                }));
+            }
+        }
+        if (this.state.qID == 4) {
+            if (event.target.id == 2) {
+                this.setState(prevstate => ({
+                    influencePoints: prevstate.influencePoints + 1
+                }));
+            }
+
+        }
+        if (this.state.qID == 5) {
+
+            if (this.state.qID >= fragen.length - 1) {
+                const name = "Ergebnis"
+
+                this.props.showHiddenProgram(name)
+            }
+        }
+
         this.setState({
+
             qID: this.state.qID + 1,
             aID: event.target.id,
             frage: fragen[this.state.qID],
@@ -46,11 +84,7 @@ class EndQuiz extends React.Component {
         console.log("Q ID: " + this.state.qID)
     }
     componentWillUnmount() {
-        this.props.saveFunction(this.state);
-        if (this.state.qID >= fragen.length - 1) {
-            const name = "Ergebnis"
-            //this.props.showHiddenProgram(name)
-        }
+
     }
 
     componentDidMount() {
@@ -59,51 +93,50 @@ class EndQuiz extends React.Component {
             newNum = this.getRandomInt(3);
         }
         this.setState({ subNumber2: newNum })
+
     }
     getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
 
-    handleSliderChange() {
-        var slider = document.getElementById("myRange");
-        var output = document.getElementById("demo");
-        output.innerHTML = slider.value;
+    handleSliderChange(event) {
 
-        slider.oninput = function () {
-            output.innerHTML = this.value;
-        }
+        this.setState({ sliderValue: event.target.value });
+
+    }
+    endEndQuiz() {
+        this.props.saveFunction(this.state);
     }
 
+    saveClick() {
+        const saveData = {
+            name: this.props.name,
+            code: this.props.code,
+            influencePoints: this.state.influencePoints,
+            images: JSON.stringify(this.state.sketches),
+            fotos: JSON.stringify(this.props.fotos()),
+            catordog: this.state.katzoderhund,
+            //end: this.props.saveFunction,
+            datum: new Date().toISOString(),
+        }
+        //this.props.saveFunction(this.state);
+        return saveData;
+        //
+
+    }
 
     render() {
 
-        const Button = styled.button`
-        background: transparent;
-        border-radius: 3px;
-        border: 2px solid #00ffff;
-        color: #00ffff;
-        margin: 0 1em;
-        font-size: 40px;
-        padding: 0.25em 1em;
 
-      
-    `
-        const Button2 = styled.button`
-        background: #00ffff;
-        color: white;
-        border-radius: 3px;
-        border: 2px solid #00ffff;
-        font-size: 40px;
-        margin: 0 1em;
-        padding: 0.25em 1em;
-
-      }
-    `
         const Frage = styled.div`
         color: #000000;
-        font-size: 30pt;
+        font-size: 26pt;
         margin: 0 1em;
         padding: 0.25em 1em;
+        text-align: center;
+        letter-spacing: -1px;
+        line-height: 22pt;
+}
 
     `
         const QuizStyle = styled.div`
@@ -135,9 +168,12 @@ class EndQuiz extends React.Component {
                             console.log(this.state.content)
                             return (<div><div className="item-frage"><Frage>{this.state.frage}</Frage></div>
                                 <div class="slidecontainer">
-                                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange" onChange={this.handleSliderChange} /></div>
-                                <p>Value: <span id="demo"></span></p>
-                                <Button id="1" onClick={this.handleClick}>{this.state.content1}</Button>
+                                    <h1><span>{this.state.sliderValue}°C</span></h1>
+                                    <input type="range" min="-5" max="40" value={this.state.sliderValue} class="slider" id="myRange" onChange={this.handleSliderChange} /></div>
+
+
+                                <div className="item-a"><button className="btnSave" id="1" onClick={this.handleClick}>weiter</button></div>
+
                             </div>
                             )
 
@@ -152,21 +188,27 @@ class EndQuiz extends React.Component {
                         else if (this.state.qID == 3) {
                             return (<QuizStyle>
                                 <div className="item-frage"><Frage>{this.state.frage}</Frage></div>
-                                <div className="item-a"><Button id="1" onClick={this.handleClick}>{this.state.content1}</Button></div>
-                                <div className="item-b"><Button2 id="2" onClick={this.handleClick}>{this.state.content2}</Button2></div>
+                                <div className="item-a"><button className="rglBtn" id="1" onClick={this.handleClick}>{this.state.content1}</button></div>
+                                <div className="item-b"><button className="rglBtn" id="2" onClick={this.handleClick}>{this.state.content2}</button></div>
                             </QuizStyle>)
 
                         } else if (this.state.qID == 4) {
+                            return (<QuizStyle>
+                                <div className="item-frage"><Frage>{this.state.frage}</Frage></div>
+                                <div className="item-a"><button className="rglBtn" id="1" onClick={this.handleClick}>{this.state.content1}</button></div>
+                                <div className="item-b"><button className="rglBtn" id="2" onClick={this.handleClick}>{this.state.content2}</button></div>
+                            </QuizStyle>)
+
+                        } else if (this.state.qID == 5) {
 
 
                             return (<QuizStyle><div className="item-end">Danke, {this.props.name}.
                                 Das Experiment ist vorbei. Jetzt verrate ich dir, worum es in dem Experiment geht.
-                                <div className="item-b">  <EasybaseProvider ebconfig={ebconfig}><SavingData name={this.props.name} code={this.props.code} influencePoints={this.state.influencePoints} images={this.state.sketches} fotos={this.props.fotos} katzoderhund={this.state.katzoderhund} />
-                                </EasybaseProvider></div>
+                                <div className="item-b"><SavingData saveFunction={this.endEndQuiz} data={this.saveClick()} /> </div>
                             </div></QuizStyle>);
 
                         }
-
+                        // <EasybaseProvider ebconfig={ebconfig}><SavingData name={this.props.name} code={this.props.code} influencePoints={this.state.influencePoints} images={this.state.sketches} fotos={this.props.fotos} katzoderhund={this.state.katzoderhund} end={this.props.saveFunction} /></EasybaseProvider>
                     })()}
 
                 </div>
@@ -187,23 +229,19 @@ function SavingData(props) {
 
 
     const handleClick = () => {
-
-        Frame().push({
-            code: props.code,
-            name: props.name,
-            datum: new Date().toISOString(),
-            influencePoints: props.influencePoints,
-            images: props.images,
+        console.log("props data", props.data)
+        Frame().push(
+            props.data
             //catOrDog: props.katzoderhund,
             //fotos: props.fotos()
 
-        })
+        )
 
         sync();
-
+        props.saveFunction()
     }
 
-    return <button className="btn" onClick={handleClick}>Daten speichern</button>
+    return <button className="btnSave" onClick={handleClick}>Ok</button>
 
 }
 export default EndQuiz

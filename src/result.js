@@ -12,12 +12,12 @@ class Result extends React.Component {
     }
     handleClick(event) {
         this.setState({
-            slide: this.state.slide +1,
-         
+            slide: this.state.slide + 1,
+
         })
 
     }
-    render(){
+    render() {
         const Button = styled.button`
         background: transparent;
         border-radius: 3px;
@@ -29,32 +29,32 @@ class Result extends React.Component {
 
       
     `
-        if (this.state.visible){
-            return(<div className="fullScreen">
-                    <div className="box">
+        if (this.state.visible) {
+            return (<div className="fullScreen">
+                <div className="box">
                     {(() => {
-                        if  (this.state.slide <= 1){
+                        if (this.state.slide <= 1) {
                             console.log(this.state.content)
-                             return(<div><div className="item-frage"></div>
-                            <div class="slidecontainer">
-                                <input type="range" min="1" max="100" value="50" class="slider" id="myRange" onChange={this.handleSliderChange}/></div>
+                            return (<div><div className="item-frage"></div>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange" onChange={this.handleSliderChange} /></div>
                                 <p>Value: <span id="demo"></span></p>
-                                <Button  id="1" onClick={this.handleClick}>{this.state.content1}</Button>
+                                <Button id="1" onClick={this.handleClick}>{this.state.content1}</Button>
                             </div>
                             )
-          
-                            
-                            }
 
-        })()}
-            
-        </div>
-    </div>
 
-)
-    }else {
-        return (null);
+                        }
+
+                    })()}
+
+                </div>
+            </div>
+
+            )
+        } else {
+            return (null);
+        }
     }
-}
 }
 export default Result

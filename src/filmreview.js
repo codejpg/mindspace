@@ -1,29 +1,39 @@
-
-
-
 import React from "react"
-
+const beginn = ["Die halbe Stunde", "Das Wetter", "Kein Mensch", "Eine Glühbirne", "Mit Butter", "Ohne Katzen"]
+const mitte = ["ist auch", "macht den Affen", "fängt die Sonne", "brennt seit Titanic", "wirkt die Sonnenblume", "geht die Welt"]
+const ende = ["neu.", "verrückt.", "sandig.", "erneut.", "immer klebrig.", "unter.", "weiter.", "völlig normal.", "trocken"]
 
 class Generator extends React.Component {
     constructor() {
         super()
         this.state = {
             name: "generator",
+            beginn: this.getRandomInt(beginn.length - 1),
+            mitte: this.getRandomInt(mitte.length - 1),
+            ende: this.getRandomInt(ende.length - 1)
         }
+    }
+    handleClick = () => {
+        this.setState({
+            beginn: this.getRandomInt(beginn.length - 1),
+            mitte: this.getRandomInt(mitte.length - 1),
+            ende: this.getRandomInt(ende.length - 1)
+        })
     }
     componentWillUnmount() {
         this.props.firstOpen(this.state.name)
     }
+    getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
     render() {
         return (
-            <div>
-                <div className="reviewContainer">
-                    <div className="film">Into The Storm</div>
-                    <div className="title">EXTREM SCHLECHTER FILM</div>
-                    <div className="sterne">1,0 von 5 Sternen</div>
-                    <div className="review">Ein extrem es schlecht gemachter Film!!! Ob Schauspieler, Story, Aktion oder Sonnst was,er wird NIEMALS an das Original TWISTER rankommen!!!! Kaufen sie diesen Film NIEMALS!!!! Eckert.</div>
-                </div>
-                <button className="rglBtn">neue Review!</button>
+
+            <div className="generatorContainer">
+                <h1>{beginn[this.state.beginn]} {mitte[this.state.mitte]} {ende[this.state.ende]}</h1>
+
+
+                <button className="btnRound" onClick={this.handleClick}></button>
             </div>
         )
     }

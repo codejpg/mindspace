@@ -7,6 +7,7 @@ import EndQuiz from './endQuiz'
 import StartQuiz from './startQuiz'
 import Generator from './filmreview'
 import Entscheidung from './entscheidung'
+import Auswertung from './auswertung'
 
 
 import FolderImage from './img/mindspace-11.svg'
@@ -15,7 +16,7 @@ import PhotoImage from './img/mindspace-09.svg'
 import KunstImage from './img/mindspace-61.svg'
 import PolyImage from './img/MindSpaceRGB neu-12.svg'
 import DrawImage from './img/mindspace-10.svg'
-import ProgressImage from './img/MindSpaceRGB neu-14.svg'
+import ProgressImage from './img/mindspace-68.svg'
 import QuizImage from './img/MindSpaceRGB-21.svg'
 import EndeImage from './img/mindspace-48.svg'
 import LupeImage from './img/mindspace-53.svg'
@@ -28,8 +29,8 @@ import GameImageHover from './img/MindSpaceRGB-16.svg'
 import PhotoImageHover from './img/mindspace-63.svg'
 import KunstImageHover from './img/mindspace-60.svg'
 import PolyImageHover from './img/MindSpaceRGB neu-17.svg'
-import DrawImageHover from './img/MindSpaceRGB neu-19.svg'
-import ProgressImageHover from './img/MindSpaceRGB-15.svg'
+import DrawImageHover from './img/mindspace-59.svg'
+import ProgressImageHover from './img/mindspace-67.svg'
 import QuizImageHover from './img/MindSpaceRGB-36.svg'
 import EndeImageHover from './img/mindspace-50.svg'
 import LupeImageHover from './img/mindspace-52.svg'
@@ -71,7 +72,7 @@ import { useEffect } from 'react';
 import ebconfig from './ebconfig';
 import { Checkbox } from "@material-ui/core";
 
-var preCodes = ["0000", "1111", "2222", "1212"];
+var preCodes = ["0000", "1111", "2222", "1212", "89238983bw"];
 
 
 
@@ -110,8 +111,11 @@ class App extends React.Component {
       subImgNumber: 0,
       showKunst: false,
       endQuizVisible: false,
+      auswertungVisible: false,
       sketchedImages: [],
       takenPhotos: [],
+      catCount: 0,
+      dogCount: 0,
       //Notification
       notePosition: "30px",
       mID: 0,
@@ -138,7 +142,7 @@ class App extends React.Component {
       login: "",
       post: [
         //{ id: 1, name: "Polycon", className: "popup2", show: true, nameShow: false, isActive: false, content: <Dum firstOpen= {this.firstOpen}/>, image: PolyImage,  hoverImage: PolyImageHover},
-        { id: 1, name: "Ordner", className: "fotoScrollDiv", show: true, nameShow: false, isActive: false, content: <Ordner firstOpen={this.firstOpen} getCode={this.getCode} getImages={this.getImages} katzoderhund={this.catOrDog} className="fotoOrdner" />, image: FolderImage, hoverImage: FolderImageHover },
+        { id: 1, name: "Ordner", className: "popup2", show: true, nameShow: false, isActive: false, content: <Ordner firstOpen={this.firstOpen} getCode={this.getCode} getImages={this.getImages} className="tierFotoOrdner" getCatCount={this.getCatCount} getDogCount={this.getDogCount} saveTierCount={this.saveTierCount} />, image: FolderImage, hoverImage: FolderImageHover },
         //{ id: 3, name: "Spiel", className: "popup2", show: true, nameShow: false, isActive: false, content: <PolySketch/>, image: GameImage, hoverImage: GameImageHover },
         { id: 2, name: "Fotoautomat", className: "photoPopUp", show: true, nameShow: false, isActive: false, content: <PhotoBooth firstOpen={this.firstOpen} saveImage={this.savePhoto} />, image: PhotoAutomatImage, hoverImage: PhotoAutomatImageHover },
         { id: 3, name: "Skizzenblock", className: "sketchPopUp", show: true, nameShow: false, isActive: false, content: <Sketch2 firstOpen={this.firstOpen} getCode={this.getCode} saveImage={this.saveSketch} />, image: DrawImage, hoverImage: DrawImageHover },
@@ -169,6 +173,8 @@ class App extends React.Component {
     this.showImages = this.showImages.bind(this);
     this.showKunst = this.showKunst.bind(this);
     this.catOrDog = this.catOrDog.bind(this);
+    this.getCatCount = this.getCatCount.bind(this);
+    this.getDogCount = this.getCatCount.bind(this);
 
 
 
@@ -176,6 +182,7 @@ class App extends React.Component {
   timer = 0;
   delay = 200;
   prevent = false;
+
 
 
   componentDidMount() {
@@ -276,21 +283,36 @@ class App extends React.Component {
       //influencePoints: data.qID,
       quizProgress: data.qID,
       favColor: data.chosenColor,
-      favTier: data.catOrDog
+
     })
     console.log("influencePoints: ", this.state.influencePoints)
   }
 
   catOrDog = () => {
-    return this.state.favTier
+    if (this.state.catCount > this.state.dogCount) {
+
+      return "Katze"
+    } else if (this.state.catCount < this.state.dogCount) {
+
+      return "Hund"
+    } else {
+      return "mag keine Tiere"
+    }
+
+
   }
 
   saveQuizData = (data) => {
+
     this.setState({
       influencePoints: data.influencePoints,
-      quizProgress: data.qID,
+      //quizProgress: data.qID,
+      auswertungVisible: true,
+      endQuizVisible: false
 
     })
+
+
     console.log("influencePoints: ", this.state.influencePoints)
   }
   getQuizData = () => {
@@ -299,6 +321,21 @@ class App extends React.Component {
 
   getBackgroundColor = (color) => {
     this.setState({ currentBgColor: color })
+  }
+
+  saveTierCount = (data) => {
+    this.setState({
+      catCount: data.catCount,
+      dogCount: data.dogCount
+    })
+  }
+  getCatCount = () => {
+    return this.state.catCount
+
+  }
+  getDogCount = () => {
+    return this.state.dogCount
+
   }
 
   showImages = () => {
@@ -311,6 +348,7 @@ class App extends React.Component {
       post: posts
     })
   }
+
 
   showKunst = () => {
     let posts = [...this.state.post];
@@ -417,6 +455,9 @@ class App extends React.Component {
   getSubNumber = () => {
     return this.state.subImgNumber
   }
+  getInfluencePoints = () => {
+    return this.state.influencePoints
+  }
 
 
   render() {
@@ -428,62 +469,64 @@ class App extends React.Component {
 
 
 
+
     const options = [
       'one', 'two', 'three'
     ];
 
     return (
+      <EasybaseProvider ebconfig={ebconfig}>
 
-      <div className="Desktop" style={{ backgroundColor: this.state.currentBgColor }}>
-        <Login login={this.state.isLoggedIn} onClick={this.handleLoginClick}></Login>
-        <div className="topBar">
-          <div className="logo"><img src={Logo}></img></div>
-          <div></div>
-          <div></div>
-          <div class="dropdown-content">Name ändern</div>
-          <div><div className="nameDisplay">{this.state.userName} <div class="dropdown-content" onClick={this.toggleNameChangePopup}>Name ändern</div></div></div>
-          <div className="time">{this.state.wochentag}. {this.state.day}.{this.state.month}. <Clock format={'HH:mm:ss'} ticking={true} timezone={'Europe/Berlin'} /></div >
-        </div>
-
-
-        <div className="contentWrap">
-          <div className="holder">
-
-            <Product getName={this.getName} data={this.state.post} onChange={this.notificationOpen} id={this.state.post.id} onClick={this.onSingleClickHandler} code={this.state.code} openEndQuiz={this.openEndQuiz} />
-
+        <div className="Desktop" style={{ backgroundColor: this.state.currentBgColor }}>
+          <Login login={this.state.isLoggedIn} onClick={this.handleLoginClick}></Login>
+          <div className="topBar">
+            <div className="logo"><img src={Logo}></img></div>
+            <div></div>
+            <div></div>
+            <div class="dropdown-content">Name ändern</div>
+            <div><div className="nameDisplay">{this.state.userName} <div class="dropdown-content" onClick={this.toggleNameChangePopup}>Name ändern</div></div></div>
+            <div className="time">{this.state.wochentag}. {this.state.day}.{this.state.month}. <Clock format={'HH:mm:ss'} ticking={true} timezone={'Europe/Berlin'} /></div >
           </div>
 
+
+          <div className="contentWrap">
+            <div className="holder">
+
+              <Product getName={this.getName} data={this.state.post} onChange={this.notificationOpen} id={this.state.post.id} onClick={this.onSingleClickHandler} code={this.state.code} openEndQuiz={this.openEndQuiz} />
+
+            </div>
+
+          </div>
+          {this.state.progressPoints >= 6 ? <Entscheidung openEndQuiz={this.openEndQuiz} showHiddenProgram={this.showHiddenProgram} /> : null}
+
+          {this.state.endQuizVisible == true ? <EndQuiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData} loadImgNumber={this.getSubNumber} code={this.state.code} name={this.state.userName} influencePoints={this.state.influencePoints} sketchedImages={this.getSketches} katzoderhund={this.catOrDog} fotos={this.getPhotos} /> : null}
+          {this.state.auswertungVisible == true ? <Auswertung influencePoints={this.getInfluencePoints} showHiddenProgram={this.showHiddenProgram} /> : null}
+          <StartQuiz name={this.state.userName} saveFunction={this.saveStartQuizData} getBgColor={this.getBackgroundColor} />
+
+          <Subliminal image={subimage} firstOpen={this.firstOpen}></Subliminal>
+          <Einleitung userName={this.state.userName} />
+          <Draggable
+            handle="#modalTopBar"
+            bounds={{ top: -250, left: -500, right: 500, bottom: 250 }}>
+            <div id="nameChangePopup">
+              <div id="modalTopBar"><h1>Name ändern</h1>
+                <button className="closeBtnEck" onClick={this.toggleNameChangePopup}></button>
+              </div>
+              <div className="content">
+
+                <input autocomplete="off" id="nameInput2" type="text" placeholder="neuer Name"></input><br />
+                <button id="nameChangeButton" onClick={this.handleNameChange}>bestätigen</button>
+
+              </div>
+            </div></Draggable>
+
+
         </div>
-        {this.state.progressPoints >= 6 ? <Entscheidung openEndQuiz={this.openEndQuiz} showHiddenProgram={this.showHiddenProgram} /> : null}
-
-        {this.state.endQuizVisible == true ? <EndQuiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData} loadImgNumber={this.getSubNumber} code={this.state.code} name={this.state.userName} influencePoints={this.state.influencePoints} sketchedImages={this.getSketches} katzoderhund={this.state.catOrDog} fotos={this.getPhotos} /> : null}
-
-        <StartQuiz name={this.state.userName} saveFunction={this.saveStartQuizData} />
-
-        <Subliminal image={subimage} firstOpen={this.firstOpen}></Subliminal>
-        <Einleitung userName={this.state.userName} />
-        <Draggable
-          handle="#modalTopBar"
-          bounds={{ top: -250, left: -500, right: 500, bottom: 250 }}>
-          <div id="nameChangePopup">
-            <div id="modalTopBar"><h1>Name ändern</h1>
-              <button className="closeBtnEck" onClick={this.toggleNameChangePopup}></button>
-            </div>
-            <div className="content">
-
-              <input autocomplete="off" id="nameInput2" type="text" placeholder="neuer Name"></input><br />
-              <button id="nameChangeButton" onClick={this.handleNameChange}>bestätigen</button>
-
-
-            </div>
-          </div></Draggable>
-
-
-      </div>
+      </EasybaseProvider>
     );
   }
 }
-function NewNoteButton(props) {
+function SavingData(props) {
   const { Frame, sync } = useEasybase();
 
   const buttonStyle = {
@@ -506,9 +549,6 @@ function NewNoteButton(props) {
     sync();
   }
 
-
-
-  return <button style={buttonStyle} onClick={handleClick}>Daten speichern</button>
 }
 
 
