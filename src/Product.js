@@ -22,20 +22,24 @@ class Product extends Component {
   }
 
   getModal = data => {
-    let modal;
-    this.state.modals.forEach(function (modal) {
-      modal.isActive = false;
-    });
-    let modals = [...this.state.modals];
-    if (data.id == 100) {
-      modal = modals[1]
+    if (data.name == "Ergebnis") {
+      this.props.openEndQuiz()
     } else {
-      modal = { ...modals[data.id - 1] };
+      let modal;
+      this.state.modals.forEach(function (modal) {
+        modal.isActive = false;
+      });
+      let modals = [...this.state.modals];
+      if (data.id == 100) {
+        modal = modals[1]
+      } else {
+        modal = { ...modals[data.id - 1] };
+      }
+      modal.showModal = true;
+      modal.isActive = true;
+      modals[data.id - 1] = modal;
+      this.setState({ modals }, () => { console.log(this.state.modals); });
     }
-    modal.showModal = true;
-    modal.isActive = true;
-    modals[data.id - 1] = modal;
-    this.setState({ modals }, () => { console.log(this.state.modals); });
 
   };
 

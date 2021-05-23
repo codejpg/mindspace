@@ -4,12 +4,15 @@
 import React from "react"
 
 
-class Review extends React.Component {
+class Generator extends React.Component {
     constructor() {
         super()
         this.state = {
-            name: "FilmReview",
+            name: "generator",
         }
+    }
+    componentWillUnmount() {
+        this.props.firstOpen(this.state.name)
     }
     render() {
         return (
@@ -25,4 +28,4 @@ class Review extends React.Component {
         )
     }
 }
-export default Review
+export default Generator

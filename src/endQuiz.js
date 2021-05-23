@@ -29,6 +29,13 @@ class EndQuiz extends React.Component {
 
     }
     handleClick(event) {
+        if (this.state.qID == 2) {
+            if (event.target.id == 1) {
+                this.setState(prevstate => ({
+                    influencePoints: prevstate.influencePoints + 1
+                }));
+            }
+        }
         this.setState({
             qID: this.state.qID + 1,
             aID: event.target.id,
@@ -42,7 +49,7 @@ class EndQuiz extends React.Component {
         this.props.saveFunction(this.state);
         if (this.state.qID >= fragen.length - 1) {
             const name = "Ergebnis"
-            this.props.showHiddenProgram(name)
+            //this.props.showHiddenProgram(name)
         }
     }
 
@@ -137,8 +144,8 @@ class EndQuiz extends React.Component {
                         } else if (this.state.qID == 2) {
                             return (<QuizStyle>
                                 <div className="item-frage"><Frage>{this.state.frage}</Frage></div>
-                                <div className="item-a" onClick={this.handleClick}><img src={require('./img/sub-' + this.state.subNumber + '.svg').default}></img></div>
-                                <div className="item-b" onClick={this.handleClick}><img src={require('./img/sub-' + this.state.subNumber2 + '.svg').default}></img></div>
+                                <div className="item-a" onClick={this.handleClick}><img id="1" src={require('./img/sub-' + this.state.subNumber + '.svg').default}></img></div>
+                                <div className="item-b" onClick={this.handleClick}><img id="2" src={require('./img/sub-' + this.state.subNumber2 + '.svg').default}></img></div>
                             </QuizStyle>)
 
                         }

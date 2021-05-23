@@ -25,8 +25,8 @@ class Einleitung extends React.Component {
                                 return (<div>
                                     <h1>Hallo, {this.props.userName}!</h1><p>
                                         Schön, dass du an diesem Experiment teilnimmst. Der Desktop den du gleich siehst, ist nur für dich.
-                 Du kannst alles erkunden, was dich interessiert. Manchmal wirst du Aufgaben bekommen.</p>
-                                    <button onClick={this.handleClick} id="welcomeButton">ok!</button>
+                 Du kannst alles erkunden, was dich interessiert. Bevor es losgeht, stelle ich dir noch ein paar Fragen.</p>
+                                    <button onClick={this.handleClick} id="welcomeButton">ok</button>
                                 </div>
                                 )
 
@@ -34,7 +34,7 @@ class Einleitung extends React.Component {
                                 return (
                                     <div>
                                         <h1>Hallo, {this.props.userName}!</h1><p>
-                                            Sobald das Experiment beendet ist, wirst du automatisch benachrichtigt. Ganz am Ende wirst du etwas über dich selbst erfahren.
+                                            Sobald das Experiment beendet ist, werde ich dich benachrichtigen. Ganz am Ende wirst du etwas über dich selbst erfahren.
                      Viel Spaß im MindSpace, {this.props.userName}!</p>
                                         <button onClick={this.handleClick} id="welcomeButton">Lets go!</button>
                                     </div>

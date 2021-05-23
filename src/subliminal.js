@@ -8,7 +8,8 @@ class Subliminal extends React.Component {
             name: "subliminal",
             randomItem: '',
             isVisible: false,
-            count: 0
+            count: 0,
+            subEnd: false
         }
     }
 
@@ -34,8 +35,6 @@ class Subliminal extends React.Component {
     componentWillUnmount() {
         this.interval && clearInterval(this.interval)
 
-        this.props.firstOpen(this.state.name)
-
 
 
 
@@ -43,9 +42,9 @@ class Subliminal extends React.Component {
 
     render() {
         const isVisible = this.state.isVisible;
-        console.log("visible: " + isVisible)
+
         if (isVisible && this.state.count < 10) {
-            setTimeout(() => { this.setState({ isVisible: false }) }, 20)
+            setTimeout(() => { this.setState({ isVisible: false }) }, 16)
 
             return (
                 <div>
@@ -58,7 +57,14 @@ class Subliminal extends React.Component {
                         </div></div></div>
             )
         }
+
         else {
+            if (this.state.count == 10 && this.state.subEnd == false) {
+
+                this.props.firstOpen(this.state.name)
+                console.log("subliminal is over")
+                this.setState({ subEnd: true })
+            }
             return (
                 <div></div>
             )

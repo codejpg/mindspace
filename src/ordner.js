@@ -13,6 +13,7 @@ class Ordner extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: "ordner",
       catOrDog: this.props.katzoderhund(),
     }
   }
@@ -31,6 +32,9 @@ class Ordner extends React.Component {
     } else if (this.state.catOrDog == "Hunde") {
       listOfImages = this.importAll(require.context('./img/hunde/', true, /\.(png|jpe?g|svg)$/));
     }
+  }
+  componentWillUnmount() {
+    this.props.firstOpen(this.state.name)
   }
 
   render() {

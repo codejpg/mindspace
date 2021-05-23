@@ -5,6 +5,9 @@ var listOfImages = [];
 class Kunst extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            name: this.props.className
+        }
     }
     importAll(r) {
         var test = r.keys().map(r);
@@ -15,6 +18,9 @@ class Kunst extends React.Component {
 
         listOfImages = this.importAll(require.context('./kunst/', false, /\.(png|jpe?g|svg)$/));
 
+    }
+    componentWillUnmount() {
+        this.props.firstOpen(this.props.className)
     }
 
     render() {

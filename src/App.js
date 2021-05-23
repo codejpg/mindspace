@@ -5,7 +5,8 @@ import './Desktop.css'
 import Dropdown from 'react-dropdown';
 import EndQuiz from './endQuiz'
 import StartQuiz from './startQuiz'
-import Review from './filmreview'
+import Generator from './filmreview'
+import Entscheidung from './entscheidung'
 
 
 import FolderImage from './img/mindspace-11.svg'
@@ -101,16 +102,20 @@ class App extends React.Component {
       progressOrdner: false,
       progressSketch: false,
       progressSubliminal: false,
+      progressGenerator: false,
+      progressFotoAlbum: false,
+      progressSkizzenAlbum: false,
       progressPoints: 0,
       quizProgress: 0,
       subImgNumber: 0,
       showKunst: false,
+      endQuizVisible: false,
       sketchedImages: [],
       takenPhotos: [],
       //Notification
       notePosition: "30px",
       mID: 0,
-      notes: "test",
+      notes: "Hier kannst du dir Notizen machen...",
       currentBgColor: "#afdcdc",
       settings: [
         { id: 1, bgColor: "#eef2f3" },
@@ -141,11 +146,11 @@ class App extends React.Component {
         { id: 4, name: "Einstellungen", className: "settingsPopup", show: true, nameShow: false, isActive: false, content: <Settings firstOpen={this.firstOpen} getBgColor={this.getBackgroundColor} />, image: SettingsIcon, hoverImage: SettingsIconHover },
         //{ id: 7, name: "Lupe", className: "popup2", show: true, nameShow: false, isActive: false, content: <Lupe firstOpen= {this.firstOpen}/>,  image: LupeImage,  hoverImage: LupeImageHover},
         { id: 5, name: "Notizen", className: "progress ", show: true, nameShow: true, isActive: false, content: <Notiz saveNotes={this.saveNotes} getNotes={this.getNotes} />, image: ProgressImage, hoverImage: ProgressImageHover },
-        { id: 6, name: "Generator", className: "popup3 ", show: true, nameShow: false, isActive: false, content: <Review firstOpen={this.firstOpen} saveNotes={this.saveNotes} getNotes={this.getNotes} />, image: GeneratorImage, hoverImage: GeneratorImageHover },
+        { id: 6, name: "Generator", className: "popup3 ", show: true, nameShow: false, isActive: false, content: <Generator firstOpen={this.firstOpen} saveNotes={this.saveNotes} getNotes={this.getNotes} />, image: GeneratorImage, hoverImage: GeneratorImageHover },
         { id: 7, name: "Kunst", className: "scrollDiv ", show: false, nameShow: true, isActive: false, content: <Kunst firstOpen={this.firstOpen} getCode={this.getCode} getImages={this.getSketches} className="kunstOrdner" />, image: KunstImage, hoverImage: KunstImageHover },
         { id: 8, name: "Fotos", className: "fotoScrollDiv ", show: false, nameShow: true, isActive: false, content: <Kunst firstOpen={this.firstOpen} getCode={this.getCode} getImages={this.getPhotos} className="fotoOrdner" />, image: PhotoImage, hoverImage: PhotoImageHover },
         //{ id: 7, name: "Quiz", className: "popup2", show: true, nameShow: false, isActive: false, content: <Quiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData} loadImgNumber={this.getSubNumber} showHiddenProgram={this.showHiddenProgram}></Quiz>, image: QuizImage, hoverImage: QuizImageHover },
-        { id: 9, name: "Ergebnis", className: "popup2 ", show: false, nameShow: true, isActive: false, content: <Notiz saveNotes={this.saveNotes} getNotes={this.getNotes} />, image: EndeImage, hoverImage: EndeImageHover },
+        { id: 9, name: "Ergebnis", className: "popup2 ", show: false, nameShow: true, isActive: false, content: 0, image: EndeImage, hoverImage: EndeImageHover },
 
       ],
 
@@ -242,7 +247,12 @@ class App extends React.Component {
 
 
   }
+  openEndQuiz = () => {
+    this.setState({
+      endQuizVisible: true
+    })
 
+  }
   handleNoteClick() {
     this.setState({
       notePosition: "-400px",
@@ -263,7 +273,7 @@ class App extends React.Component {
 
   saveStartQuizData = (data) => {
     this.setState({
-      influencePoints: data.qID,
+      //influencePoints: data.qID,
       quizProgress: data.qID,
       favColor: data.chosenColor,
       favTier: data.catOrDog
@@ -277,7 +287,7 @@ class App extends React.Component {
 
   saveQuizData = (data) => {
     this.setState({
-      influencePoints: data.qID,
+      influencePoints: data.influencePoints,
       quizProgress: data.qID,
 
     })
@@ -363,23 +373,23 @@ class App extends React.Component {
   }
 
   firstOpen = (val) => {
-    if (val == "lupe" && this.state.progressLupe == false) {
-      console.log("Progress:", this.state.progressPoints)
-      this.setState(prevstate => ({ progressPoints: prevstate.progressPoints + 1, progressLupe: true }));
-    } else if (val == "ordner" && this.state.progressOrdner == false) {
-      console.log("Progress:", this.state.progressPoints)
+    if (val == "ordner" && this.state.progressOrdner == false) {
+      //this.setState(prevstate => ({ progressPoints: prevstate.progressPoints + 1, progressLupe: true }));
       this.setState(prevstate => ({ progressPoints: prevstate.progressPoints + 1, progressOrdner: true }));
-    } else if (val == "sketch" && this.state.progressOrdner == false) {
-      console.log("Progress:", this.state.progressPoints)
+    } else if (val == "sketch" && this.state.progressSketch == false) {
       this.setState(prevstate => ({ progressPoints: prevstate.progressPoints + 1, progressSketch: true }));
-    } else if (val == "subliminal" && this.state.progressOrdner == false) {
-      console.log("Progress:", this.state.progressPoints)
+    } else if (val == "subliminal" && this.state.progressSubliminal == false) {
       this.setState(prevstate => ({ progressPoints: prevstate.progressPoints + 1, progressSubliminal: true }));
+    } else if (val == "generator" && this.state.progressGenerator == false) {
+      this.setState(prevstate => ({ progressPoints: prevstate.progressPoints + 1, progressGenerator: true }));
+    } else if (val == "fotoOrdner" && this.state.progressFotoAlbum == false) {
+      this.setState(prevstate => ({ progressPoints: prevstate.progressPoints + 1, progressFotoAlbum: true }));
+    } else if (val == "kunstOrdner" && this.state.progressSkizzenAlbum == false) {
+      this.setState(prevstate => ({ progressPoints: prevstate.progressPoints + 1, progressSkizzenAlbum: true }));
     } else {
-
       console.log("Progress:", this.state.progressPoints)
-
     }
+    console.log("Progress:", this.state.progressPoints)
 
     //if(this.state.progressPoints >= 3){
     // const name = "Quiz"
@@ -439,12 +449,15 @@ class App extends React.Component {
         <div className="contentWrap">
           <div className="holder">
 
-            <Product getName={this.getName} data={this.state.post} onChange={this.notificationOpen} id={this.state.post.id} onClick={this.onSingleClickHandler} code={this.state.code} />
+            <Product getName={this.getName} data={this.state.post} onChange={this.notificationOpen} id={this.state.post.id} onClick={this.onSingleClickHandler} code={this.state.code} openEndQuiz={this.openEndQuiz} />
 
           </div>
 
         </div>
-        {this.state.progressPoints >= 4 ? <EndQuiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData} loadImgNumber={this.getSubNumber} showHiddenProgram={this.showHiddenProgram} code={this.state.code} name={this.state.userName} influencePoints={this.state.influencePoints} sketchedImages={this.getSketches} katzoderhund={this.state.catOrDog} fotos={this.getPhotos} /> : null}
+        {this.state.progressPoints >= 6 ? <Entscheidung openEndQuiz={this.openEndQuiz} showHiddenProgram={this.showHiddenProgram} /> : null}
+
+        {this.state.endQuizVisible == true ? <EndQuiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData} loadImgNumber={this.getSubNumber} code={this.state.code} name={this.state.userName} influencePoints={this.state.influencePoints} sketchedImages={this.getSketches} katzoderhund={this.state.catOrDog} fotos={this.getPhotos} /> : null}
+
         <StartQuiz name={this.state.userName} saveFunction={this.saveStartQuizData} />
 
         <Subliminal image={subimage} firstOpen={this.firstOpen}></Subliminal>
@@ -497,6 +510,8 @@ function NewNoteButton(props) {
 
   return <button style={buttonStyle} onClick={handleClick}>Daten speichern</button>
 }
+
+
 /*
 function GetUserData() {
   useEffect(() => {
