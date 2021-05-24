@@ -46,12 +46,14 @@ class StartQuiz extends React.Component {
             console.log("yes")
             const id = event.target.id;
             this.props.getBgColor(this.state.colors[id].bgColor)
+            this.finish()
         }
         if (this.state.qID == 6) {
             const id = event.target.id;
             this.setState({
                 chosenColor: id
             })
+
         }
 
         this.setState({

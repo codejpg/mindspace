@@ -520,7 +520,7 @@ class App extends React.Component {
           {this.state.progressPoints >= 6 ? <Entscheidung openEndQuiz={this.openEndQuiz} showHiddenProgram={this.showHiddenProgram} /> : null}
 
           {this.state.endQuizVisible == true ? <EndQuiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData} loadImgNumber={this.getSubNumber} code={this.state.code} name={this.state.userName} influencePoints={this.state.influencePoints} sketchedImages={this.getSketches} katzoderhund={this.catOrDog} fotos={this.getPhotos} /> : null}
-          {this.state.auswertungVisible == true ? <Auswertung influencePoints={this.getInfluencePoints} showHiddenProgram={this.showHiddenProgram} hideAuswertung={this.hideAuswertung} /> : null}
+          {this.state.auswertungVisible == true ? <Auswertung influencePoints={this.getInfluencePoints} loadImgNumber={this.getSubNumber} showHiddenProgram={this.showHiddenProgram} hideAuswertung={this.hideAuswertung} /> : null}
           <StartQuiz name={this.state.userName} saveFunction={this.saveStartQuizData} getBgColor={this.getBackgroundColor} />
 
           {this.state.startSubliminal ? <Subliminal image={subimage} firstOpen={this.firstOpen}></Subliminal> : null}

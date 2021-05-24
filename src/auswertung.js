@@ -7,6 +7,11 @@ import FederImage from './img/feder.svg'
 import ToDoImage from './img/todo.svg'
 import SteinImage from './img/stein.svg'
 import PendelImage from './img/pendel.svg'
+import SpiraleImage from './img/OSCILL-78.svg'
+import BoxImage from './img/OSCILL-79.svg'
+import KatzeIcon from "./img/katz.svg"
+import HundIcon from "./img/hund.svg"
+import HoverImage from 'react-hover-image/build'
 
 class Auswertung extends React.Component {
     constructor(props) {
@@ -16,6 +21,8 @@ class Auswertung extends React.Component {
             auswertungVisible: true,
             influencePoints: this.props.influencePoints(),
             startAuswertung: true,
+            subNumber: this.props.loadImgNumber(),
+            subNummer2: "",
         }
 
     }
@@ -86,6 +93,17 @@ class Auswertung extends React.Component {
             return "zu 100%"
         }
     }
+    getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+    componentDidMount() {
+        let newNum = this.getRandomInt(3);
+        while (newNum == this.state.subNumber) {
+            newNum = this.getRandomInt(3);
+        }
+        this.setState({ subNumber2: newNum })
+
+    }
     render() {
         if (this.state.visible && this.state.auswertungVisible && this.state.startAuswertung) {
             return (
@@ -129,9 +147,30 @@ class Auswertung extends React.Component {
             )
         } else if (this.state.visible && this.state.auswertungVisible == false) {
             return (<div className="fullScreen">
-                <div className="auswertungBox">
+                <div className="manipulationBox">
                     <h1>Die Manipulation</h1>
-                    <button id="4" className="endBtn" onClick={this.handleClick}>Zurück zum Ergebnis</button>
+                    <div className="innerDiv">
+
+                        Wie du schon erfahren hast, geht es im MindSpace dein Verhalten zu beeinflussen. Wie genau das abgelaufen ist erkläre ich dir hier.
+
+                        <h2>1. Subliminal Messaging</h2>
+                        <HoverImage className="manipulationImg" id="1" src={require('./img/sub-' + this.state.subNumber + '.svg').default} hoverSrc={require('./img/sub-' + this.state.subNumber2 + '.svg').default} /><br></br>
+
+                        Vielleicht hast du ein Aufflackern bemerkt. Das war eine subliminale Beeinflussung, also ein visueller Trigger, der dich unterbewusst an eine Form gewöhnen sollte, die du dann auswählen solltest.
+
+                        <h2>2. Assoziation</h2>
+                        Die Weisheiten, die der Generator für dich erstellt hat, enthalten Begriffe die dich auf eine Entscheidung vorbereiten sollte. Die Assoziationen, die ausgelöst werden sollten, waren "warm" und "gelb", ohne diese Begriffe direkt zu nennen. So solltest du bei deiner Wahl der Durchschnittstemperatur und der zwischen Apfel und Banane zu einer wärmeren Temperatur tendieren und die Banane auswählen.
+
+                        <h2>3. Priming</h2>
+                        <HoverImage className="manipulationImg" src={SpiraleImage} hoverSrc={BoxImage} /><br></br>
+
+                        Neben dir auf dem Tisch steht ein Oszilloskop. Das ist ein Gerät, das elektronische Spannungen und ihren zeitlichen Verlauf auf dem Bildschirm sichtbar macht. Der Ablauf von Formen sollte dich darauf vorbereiten, die Spriale auszuwählen. Das ist ein visueller Trigger, der im idealfall unterbewusst wahrgenommen wird und dich dazu tendieren lässt, diese Form auszuwählen.
+                           <h2>4. Hund oder Katze?</h2>
+                        <HoverImage className="manipulationImg" src={HundIcon} hoverSrc={KatzeIcon} /><br></br>
+
+                        Auf Social Media Plattformen entsteht bei der Nutzung ein Datenprofil, das versucht dein Verhalten vorherzusagen. Deshalb bekommst du dort Inhalte angezeigt, die deinen Interessen entsprechen. Du konntest die Katzen- und Hundebilder ansehen. Ich wollte herausfinden, ob du Katzen oder Hunde bevorzugst.
+                    </div>
+                    <button id="4" className="btnMani" onClick={this.handleClick}>Zurück zum Ergebnis</button>
 
                 </div></div>
             )

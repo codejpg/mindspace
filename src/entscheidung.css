@@ -95,6 +95,38 @@
     background-clip: padding-box;
 }
 
+.manipulationBox {
+    position: fixed;
+    top: 10%;
+    left: 20%;
+    right: 20%;
+    bottom: 10%;
+    background-color: #eef2f3;
+    padding: 40px;
+    border: solid 0.5px grey;
+    border-radius: 3px;
+    -webkit-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    -moz-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+
+}
+
+.manipulationBox h1 {
+    text-align: center;
+}
+
+.manipulationImg {
+    height: 100px;
+}
+
+.innerDiv {
+    height: 80%;
+    overflow-y: scroll;
+}
+
 .resultImage {
     display: block;
     margin-left: auto;
@@ -140,6 +172,30 @@
     margin-right: 40%;
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
     font-size: 20pt;
+    text-align: center;
+    box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
+    transform: translate(-0.4rem, -0.4rem);
+
+}
+
+.btnMani {
+
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    font-size: 12pt;
+    background-color: #ffffff7b;
+    border: 1px solid black;
+    box-shadow: 0 0 0 black;
+    transition: all 0.2s;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-left: 25%;
+    margin-right: 40%;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+
     text-align: center;
     box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
     transform: translate(-0.4rem, -0.4rem);
