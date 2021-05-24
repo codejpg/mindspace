@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.6b97e2fc.chunk.css",
-    "main.js": "/static/js/main.d4117314.chunk.js",
-    "main.js.map": "/static/js/main.d4117314.chunk.js.map",
+    "main.css": "/static/css/main.01cd9556.chunk.css",
+    "main.js": "/static/js/main.2a67c6fa.chunk.js",
+    "main.js.map": "/static/js/main.2a67c6fa.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.dc0a23a4.js",
     "runtime-main.js.map": "/static/js/runtime-main.dc0a23a4.js.map",
     "static/js/2.f5b13fbe.chunk.js": "/static/js/2.f5b13fbe.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.ff29326e.chunk.js": "/static/js/3.ff29326e.chunk.js",
     "static/js/3.ff29326e.chunk.js.map": "/static/js/3.ff29326e.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.6b97e2fc.chunk.css.map": "/static/css/main.6b97e2fc.chunk.css.map",
+    "static/css/main.01cd9556.chunk.css.map": "/static/css/main.01cd9556.chunk.css.map",
     "static/js/2.f5b13fbe.chunk.js.LICENSE.txt": "/static/js/2.f5b13fbe.chunk.js.LICENSE.txt",
     "static/media/04petpics3.jpeg": "/static/media/04petpics3.962641e4.jpeg",
     "static/media/123123.png": "/static/media/123123.df56ea05.png",
@@ -64,6 +64,8 @@
     "static/media/MindSpaceRGB-16.6ba41ce4.svg": "/static/media/MindSpaceRGB-16.6ba41ce4.svg",
     "static/media/MindSpaceRGB-21.c63f3b26.svg": "/static/media/MindSpaceRGB-21.c63f3b26.svg",
     "static/media/MindSpaceRGB-36.4df7ee26.svg": "/static/media/MindSpaceRGB-36.4df7ee26.svg",
+    "static/media/OSCILL-78.1089939b.svg": "/static/media/OSCILL-78.1089939b.svg",
+    "static/media/OSCILL-79.a801eb4a.svg": "/static/media/OSCILL-79.a801eb4a.svg",
     "static/media/The_Science-Backed_Benefits_of_Being_a_Dog_Owner.jpeg": "/static/media/The_Science-Backed_Benefits_of_Being_a_Dog_Owner.c2b07a86.jpeg",
     "static/media/Top-3-Friendliest-Dog-Breeds-That-Will-Entertain-the-Entire-Family.jpeg": "/static/media/Top-3-Friendliest-Dog-Breeds-That-Will-Entertain-the-Entire-Family.96f2bab6.jpeg",
     "static/media/Transparent-OrangeWhiteCat-764x1024.png": "/static/media/Transparent-OrangeWhiteCat-764x1024.638db8c3.png",
@@ -76,6 +78,7 @@
     "static/media/cutest-dog-breeds-beagle-1587053767.jpeg": "/static/media/cutest-dog-breeds-beagle-1587053767.6b6b30c4.jpeg",
     "static/media/cutest-dog-breeds-cavalier-king-charles-spaniel-1587053834.jpeg": "/static/media/cutest-dog-breeds-cavalier-king-charles-spaniel-1587053834.0b51d5eb.jpeg",
     "static/media/dog-jumping-for-joy.jpeg": "/static/media/dog-jumping-for-joy.3591fff3.jpeg",
+    "static/media/feder.fcf790fc.svg": "/static/media/feder.fcf790fc.svg",
     "static/media/filename (1) Kopie.png": "/static/media/filename (1) Kopie.fcffb124.png",
     "static/media/filename (1).png": "/static/media/filename (1).99f91fcd.png",
     "static/media/filename (3) Kopie.png": "/static/media/filename (3) Kopie.f93b804a.png",
@@ -87,6 +90,7 @@
     "static/media/katz.73b2ac4a.svg": "/static/media/katz.73b2ac4a.svg",
     "static/media/logo.7f9978cb.svg": "/static/media/logo.7f9978cb.svg",
     "static/media/logo_1.f4667cd5.svg": "/static/media/logo_1.f4667cd5.svg",
+    "static/media/lupe.22c70d28.svg": "/static/media/lupe.22c70d28.svg",
     "static/media/maxresdefault-2.jpg": "/static/media/maxresdefault-2.5f98f346.jpg",
     "static/media/maxresdefault-3.jpg": "/static/media/maxresdefault-3.b8402077.jpg",
     "static/media/mindspace-09.fb56d437.svg": "/static/media/mindspace-09.fb56d437.svg",
@@ -111,20 +115,23 @@
     "static/media/mindspace-68.e90ef1d7.svg": "/static/media/mindspace-68.e90ef1d7.svg",
     "static/media/mindspace_-20.42fe142d.svg": "/static/media/mindspace_-20.42fe142d.svg",
     "static/media/original.jpg": "/static/media/original.2449fbc3.jpg",
+    "static/media/pendel.dc40e9a3.svg": "/static/media/pendel.dc40e9a3.svg",
     "static/media/rotesMuster-47.20e7c02e.svg": "/static/media/rotesMuster-47.20e7c02e.svg",
     "static/media/selfie0.png": "/static/media/selfie0.b125ae01.png",
+    "static/media/stein.c720da97.svg": "/static/media/stein.c720da97.svg",
     "static/media/sub-0.svg": "/static/media/sub-0.bd139663.svg",
     "static/media/sub-1.svg": "/static/media/sub-1.9cb4391d.svg",
     "static/media/sub-2.svg": "/static/media/sub-2.779ca9b1.svg",
     "static/media/sub-3.svg": "/static/media/sub-3.f50a2bbf.svg",
     "static/media/tap-warm.15655e04.mp3": "/static/media/tap-warm.15655e04.mp3",
+    "static/media/todo.95bce38c.svg": "/static/media/todo.95bce38c.svg",
     "static/media/un.prof_nametag.png": "/static/media/un.prof_nametag.289b908e.png",
     "static/media/wqwq.png": "/static/media/wqwq.f1e81a01.png"
   },
   "entrypoints": [
     "static/js/runtime-main.dc0a23a4.js",
     "static/js/2.f5b13fbe.chunk.js",
-    "static/css/main.6b97e2fc.chunk.css",
-    "static/js/main.d4117314.chunk.js"
+    "static/css/main.01cd9556.chunk.css",
+    "static/js/main.2a67c6fa.chunk.js"
   ]
 }
