@@ -5,7 +5,7 @@ import SpiraleImage from './img/OSCILL-78.svg'
 import BoxImage from './img/OSCILL-79.svg'
 import { EasybaseProvider, useEasybase } from 'easybase-react';
 import ebconfig from './ebconfig';
-let fragen = ["Was ist die Durchschnittstemperatur in Deutschland?", "Wähle ein Form aus.", "Was magst du lieber?", "Wähle eins!", "Wähle eine Form aus."]
+let fragen = ["Was ist die Durchschnittstemperatur in Deutschland?", "Wähle eine Form aus.", "Was magst du lieber?", "Wähle.", "Wähle eine Form aus."]
 let antworten1 = ["0", "antwort1", "Sport machen", "Banane", "antwort7"]
 let antworten2 = ["0", "antwort2", "Auf der Couch entspannen", "Apfel", "antwort8"]
 
@@ -138,7 +138,17 @@ class EndQuiz extends React.Component {
     }
 
     render() {
+        const Einleitung = styled.div`
+        color: #000000;
+        font-size: 26pt;
+        margin: 0 1em;
+        padding: 0.25em 1em;
+        text-align: center;
+        letter-spacing: -1px;
+        line-height: 40pt;
+}
 
+    `
 
         const Frage = styled.div`
         color: #000000;
@@ -176,7 +186,14 @@ class EndQuiz extends React.Component {
             return (<div className="fullScreen">
                 <div className="box">
                     {(() => {
-                        if (this.state.qID <= 1) {
+                        if (this.state.qID == 0) {
+                            return (<QuizStyle>
+                                <div className="item-frage"><Einleitung>Bevor ich dir verrate, worum es in diesem Experiment geht, würde ich dich bitten einige Fragen zu beantworten.</Einleitung></div>
+                                <div className="item-a"><button className="btnSave" id="1" onClick={this.handleClick}>alles klar</button></div>
+
+                            </QuizStyle>
+                            )
+                        } else if (this.state.qID == 1) {
                             console.log(this.state.content)
                             return (<div><div className="item-frage"><Frage>{this.state.frage}</Frage></div>
                                 <div class="slidecontainer">

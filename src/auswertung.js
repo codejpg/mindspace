@@ -14,7 +14,8 @@ class Auswertung extends React.Component {
         this.state = {
             visible: true,
             auswertungVisible: true,
-            influencePoints: this.props.influencePoints()
+            influencePoints: this.props.influencePoints(),
+            startAuswertung: true,
         }
 
     }
@@ -29,6 +30,8 @@ class Auswertung extends React.Component {
             this.setState({ auswertungVisible: false })
         } else if (event.target.id == 4) {
             this.setState({ auswertungVisible: true })
+        } else if (event.target.id == 5) {
+            this.setState({ startAuswertung: false })
         }
     }
     bildErgebnis() {
@@ -84,7 +87,22 @@ class Auswertung extends React.Component {
         }
     }
     render() {
-        if (this.state.visible && this.state.auswertungVisible) {
+        if (this.state.visible && this.state.auswertungVisible && this.state.startAuswertung) {
+            return (
+                <div className="fullScreen">
+                    <div className="auswertungBox">
+                        <div className="erklärung">
+                            <h1>Worum geht es in diesem Experiment?</h1>
+                            Der MindSpace hat versucht dich zu beeinflussen. Es ging darum, verschiedene Manipulationsmechanismen anzuwenden, um deine Entscheidungen zu lenken.
+                            Daten über deine Entscheidungen wurden gesammelt und ausgewertet. Das Ziel dieses Experiments ist zum einen den Teilnehmer:innen die deine eigene Beeinflussbarkeit bewusster zu machen und zum anderen das Testen von Manipulationsmechanismen.
+                            Ob der MindSpace geschafft hat dich zu beeinflussen erfährst du in deiner persönlichen Auswertung.
+                        </div><button id="5" className="btnAus" onClick={this.handleClick}>Zu deiner Auswertung</button>
+
+                    </div>
+                </div>
+            )
+        }
+        else if (this.state.visible && this.state.auswertungVisible && this.state.startAuswertung == false) {
             return (
                 <div className="fullScreen">
                     <div className="auswertungBox">
@@ -95,12 +113,15 @@ class Auswertung extends React.Component {
 
 
                        Dein Ergebnis bedeutet, dass du {this.textEinstufung()} beeinflussbar bist.
-                       <p id="3" className="linkP" onClick={this.handleClick}>Wie lief die Beeinflussung ab?</p>
+
 
                         <div className="erster">
                             <button id="1" className="endBtn" onClick={this.handleClick}>Zurück in den Mindspace</button></div>
                         <div className="zweiter">
                             <button id="2" className="endBtn" onClick={this.handleClick}>Experiment verlassen</button></div>
+
+                        <div className="dritter">
+                            <button id="3" className="endBtn" onClick={this.handleClick}>Wie lief die Beeinflussung ab?</button></div>
                     </div>
 
 
@@ -109,7 +130,7 @@ class Auswertung extends React.Component {
         } else if (this.state.visible && this.state.auswertungVisible == false) {
             return (<div className="fullScreen">
                 <div className="auswertungBox">
-                    <h1>Wie ich versucht habe dich zu beeinflussen</h1>
+                    <h1>Die Manipulation</h1>
                     <button id="4" className="endBtn" onClick={this.handleClick}>Zurück zum Ergebnis</button>
 
                 </div></div>

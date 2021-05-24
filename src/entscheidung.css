@@ -68,6 +68,12 @@
     position: absolute;
     right: 60px;
     bottom: 0;
+}
+
+.dritter {
+    position: absolute;
+    left: 35%;
+    bottom: 0;
 
 }
 
@@ -103,4 +109,39 @@
 
 .linkP:hover {
     text-decoration: underline;
+}
+
+.erklärung {
+    padding: 50px;
+    font-size: 20pt;
+    line-height: 30pt;
+}
+
+.erklärung h1 {
+    line-height: 40pt;
+}
+
+
+.btnAus {
+
+    position: absolute;
+    bottom: 50px;
+    height: 50px;
+    font-size: 12pt;
+    background-color: #ffffff7b;
+    border: 1px solid black;
+    box-shadow: 0 0 0 black;
+    transition: all 0.2s;
+    margin-top: 35px;
+    margin-bottom: 60px;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-left: 25%;
+    margin-right: 40%;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-size: 20pt;
+    text-align: center;
+    box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
+    transform: translate(-0.4rem, -0.4rem);
+
 }

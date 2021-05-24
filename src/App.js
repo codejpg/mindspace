@@ -72,7 +72,7 @@ import { useEffect } from 'react';
 import ebconfig from './ebconfig';
 import { Checkbox } from "@material-ui/core";
 
-var preCodes = ["0000", "1111", "2222", "1212", "89238983bw", "A22-Bt31"];
+var preCodes = ["0000", "1111", "2222", "1212", "89238983bw", "A22-Bt31", "F37-25T"];
 
 
 
@@ -113,6 +113,7 @@ class App extends React.Component {
       endQuizVisible: false,
       auswertungVisible: false,
       endQuizDone: false,
+      startSubliminal: false,
       sketchedImages: [],
       takenPhotos: [],
       catCount: 0,
@@ -300,6 +301,7 @@ class App extends React.Component {
       //influencePoints: data.qID,
       quizProgress: data.qID,
       favColor: data.chosenColor,
+      startSubliminal: true
 
     })
     console.log("influencePoints: ", this.state.influencePoints)
@@ -521,7 +523,7 @@ class App extends React.Component {
           {this.state.auswertungVisible == true ? <Auswertung influencePoints={this.getInfluencePoints} showHiddenProgram={this.showHiddenProgram} hideAuswertung={this.hideAuswertung} /> : null}
           <StartQuiz name={this.state.userName} saveFunction={this.saveStartQuizData} getBgColor={this.getBackgroundColor} />
 
-          <Subliminal image={subimage} firstOpen={this.firstOpen}></Subliminal>
+          {this.state.startSubliminal ? <Subliminal image={subimage} firstOpen={this.firstOpen}></Subliminal> : null}
           <Einleitung userName={this.state.userName} />
           <Draggable
             handle="#modalTopBar"
