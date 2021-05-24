@@ -1,11 +1,13 @@
 import React from "react"
 import styled, { ThemeConsumer } from 'styled-components'
 import "./endquiz.css"
+import SpiraleImage from './img/OSCILL-78.svg'
+import BoxImage from './img/OSCILL-79.svg'
 import { EasybaseProvider, useEasybase } from 'easybase-react';
 import ebconfig from './ebconfig';
-let fragen = ["Was ist die Durchschnittstemperatur in Deutschland?", "Wähle ein Form aus.", "Was magst du lieber?", "Wähle eins!", "Wähle:"]
-let antworten1 = ["0", "antwort1", "Im Grünen sein", "Apfel", "antwort7"]
-let antworten2 = ["0", "antwort2", "Auf der Couch entspannen", "Banane", "antwort8"]
+let fragen = ["Was ist die Durchschnittstemperatur in Deutschland?", "Wähle ein Form aus.", "Was magst du lieber?", "Wähle eins!", "Wähle eine Form aus."]
+let antworten1 = ["0", "antwort1", "Sport machen", "Banane", "antwort7"]
+let antworten2 = ["0", "antwort2", "Auf der Couch entspannen", "Apfel", "antwort8"]
 
 
 class EndQuiz extends React.Component {
@@ -57,7 +59,7 @@ class EndQuiz extends React.Component {
             }
         }
         if (this.state.qID == 4) {
-            if (event.target.id == 2) {
+            if (event.target.id == 1) {
                 this.setState(prevstate => ({
                     influencePoints: prevstate.influencePoints + 1
                 }));
@@ -65,6 +67,14 @@ class EndQuiz extends React.Component {
 
         }
         if (this.state.qID == 5) {
+            if (event.target.id == 2) {
+                this.setState(prevstate => ({
+                    influencePoints: prevstate.influencePoints + 1
+                }));
+            }
+
+        }
+        if (this.state.qID == 6) {
 
             if (this.state.qID >= fragen.length - 1) {
                 const name = "Ergebnis"
@@ -107,6 +117,8 @@ class EndQuiz extends React.Component {
     endEndQuiz() {
         this.props.saveFunction(this.state);
     }
+
+
 
     saveClick() {
         const saveData = {
@@ -151,7 +163,7 @@ class EndQuiz extends React.Component {
             left: 0;
             right:0;
             color: #000000;
-            background-color: #dedddc;
+            background-color: #eef2f3
             overflow: hidden;
             width: 100%;
             height: 100%;
@@ -200,6 +212,13 @@ class EndQuiz extends React.Component {
                             </QuizStyle>)
 
                         } else if (this.state.qID == 5) {
+                            return (<QuizStyle>
+                                <div className="item-frage"><Frage>{this.state.frage}</Frage></div>
+                                <div className="item-a" onClick={this.handleClick}><img id="1" src={BoxImage}></img></div>
+                                <div className="item-b" onClick={this.handleClick}><img id="2" src={SpiraleImage}></img></div>
+                            </QuizStyle>)
+
+                        } else if (this.state.qID == 6) {
 
 
                             return (<QuizStyle><div className="item-end">Danke, {this.props.name}.

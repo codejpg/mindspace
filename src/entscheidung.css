@@ -60,21 +60,23 @@
 .erster {
     position: absolute;
     left: 10px;
+    bottom: 0;
 
 }
 
 .zweiter {
     position: absolute;
     right: 60px;
+    bottom: 0;
 
 }
 
 .auswertungBox {
     position: fixed;
-    top: 20%;
+    top: 10%;
     left: 20%;
     right: 20%;
-    bottom: 20%;
+    bottom: 10%;
     background-color: #eef2f3;
     padding: 40px;
     border: solid 0.5px grey;
@@ -85,4 +87,20 @@
     -webkit-background-clip: padding-box;
     -moz-background-clip: padding-box;
     background-clip: padding-box;
+}
+
+.resultImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40%;
+    padding: 20px;
+}
+
+.auswertungBox h1 {
+    text-align: center;
+}
+
+.linkP:hover {
+    text-decoration: underline;
 }

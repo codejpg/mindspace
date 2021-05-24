@@ -23,7 +23,14 @@ class Product extends Component {
 
   getModal = data => {
     if (data.name == "Ergebnis") {
-      this.props.openEndQuiz()
+      console.log("endquiz done?:", this.props.endQuizDone())
+      if (this.props.endQuizDone()) {
+        console.log("endquiz done?:", this.props.openAuswertung())
+        this.props.openAuswertung()
+
+      } else {
+        this.props.openEndQuiz()
+      }
     } else {
       let modal;
       this.state.modals.forEach(function (modal) {
@@ -67,7 +74,7 @@ class Product extends Component {
 
   hoverEffect = (e) => {
 
-    e.currentTarget.style.transition = "2s all"
+    e.currentTarget.style.transition = "0.5s all"
     e.currentTarget.style.opacity = "0"
     e.currentTarget.src = e.target.dataset.key
   }

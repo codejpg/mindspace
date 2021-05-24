@@ -72,7 +72,7 @@ import { useEffect } from 'react';
 import ebconfig from './ebconfig';
 import { Checkbox } from "@material-ui/core";
 
-var preCodes = ["0000", "1111", "2222", "1212", "89238983bw"];
+var preCodes = ["0000", "1111", "2222", "1212", "89238983bw", "A22-Bt31"];
 
 
 
@@ -112,6 +112,7 @@ class App extends React.Component {
       showKunst: false,
       endQuizVisible: false,
       auswertungVisible: false,
+      endQuizDone: false,
       sketchedImages: [],
       takenPhotos: [],
       catCount: 0,
@@ -137,12 +138,12 @@ class App extends React.Component {
       month: today.getMonth(),
       wochentag: weekday[today.getDay()],
       displayText: "",
-      isLoggedIn: true,
+      isLoggedIn: false,
       addData: false,
       login: "",
       post: [
         //{ id: 1, name: "Polycon", className: "popup2", show: true, nameShow: false, isActive: false, content: <Dum firstOpen= {this.firstOpen}/>, image: PolyImage,  hoverImage: PolyImageHover},
-        { id: 1, name: "Ordner", className: "popup2", show: true, nameShow: false, isActive: false, content: <Ordner firstOpen={this.firstOpen} getCode={this.getCode} getImages={this.getImages} className="tierFotoOrdner" getCatCount={this.getCatCount} getDogCount={this.getDogCount} saveTierCount={this.saveTierCount} />, image: FolderImage, hoverImage: FolderImageHover },
+        { id: 1, name: "Bilder", className: "popup2", show: true, nameShow: false, isActive: false, content: <Ordner firstOpen={this.firstOpen} getCode={this.getCode} getImages={this.getImages} className="tierFotoOrdner" getCatCount={this.getCatCount} getDogCount={this.getDogCount} saveTierCount={this.saveTierCount} />, image: FolderImage, hoverImage: FolderImageHover },
         //{ id: 3, name: "Spiel", className: "popup2", show: true, nameShow: false, isActive: false, content: <PolySketch/>, image: GameImage, hoverImage: GameImageHover },
         { id: 2, name: "Fotoautomat", className: "photoPopUp", show: true, nameShow: false, isActive: false, content: <PhotoBooth firstOpen={this.firstOpen} saveImage={this.savePhoto} />, image: PhotoAutomatImage, hoverImage: PhotoAutomatImageHover },
         { id: 3, name: "Skizzenblock", className: "sketchPopUp", show: true, nameShow: false, isActive: false, content: <Sketch2 firstOpen={this.firstOpen} getCode={this.getCode} saveImage={this.saveSketch} />, image: DrawImage, hoverImage: DrawImageHover },
@@ -150,7 +151,7 @@ class App extends React.Component {
         { id: 4, name: "Einstellungen", className: "settingsPopup", show: true, nameShow: false, isActive: false, content: <Settings firstOpen={this.firstOpen} getBgColor={this.getBackgroundColor} />, image: SettingsIcon, hoverImage: SettingsIconHover },
         //{ id: 7, name: "Lupe", className: "popup2", show: true, nameShow: false, isActive: false, content: <Lupe firstOpen= {this.firstOpen}/>,  image: LupeImage,  hoverImage: LupeImageHover},
         { id: 5, name: "Notizen", className: "progress ", show: true, nameShow: true, isActive: false, content: <Notiz saveNotes={this.saveNotes} getNotes={this.getNotes} />, image: ProgressImage, hoverImage: ProgressImageHover },
-        { id: 6, name: "Generator", className: "popup3 ", show: true, nameShow: false, isActive: false, content: <Generator firstOpen={this.firstOpen} saveNotes={this.saveNotes} getNotes={this.getNotes} />, image: GeneratorImage, hoverImage: GeneratorImageHover },
+        { id: 6, name: "Weisheiten Generator", className: "popup3 ", show: true, nameShow: false, isActive: false, content: <Generator firstOpen={this.firstOpen} saveNotes={this.saveNotes} getNotes={this.getNotes} />, image: GeneratorImage, hoverImage: GeneratorImageHover },
         { id: 7, name: "Kunst", className: "scrollDiv ", show: false, nameShow: true, isActive: false, content: <Kunst firstOpen={this.firstOpen} getCode={this.getCode} getImages={this.getSketches} className="kunstOrdner" />, image: KunstImage, hoverImage: KunstImageHover },
         { id: 8, name: "Fotos", className: "fotoScrollDiv ", show: false, nameShow: true, isActive: false, content: <Kunst firstOpen={this.firstOpen} getCode={this.getCode} getImages={this.getPhotos} className="fotoOrdner" />, image: PhotoImage, hoverImage: PhotoImageHover },
         //{ id: 7, name: "Quiz", className: "popup2", show: true, nameShow: false, isActive: false, content: <Quiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData} loadImgNumber={this.getSubNumber} showHiddenProgram={this.showHiddenProgram}></Quiz>, image: QuizImage, hoverImage: QuizImageHover },
@@ -175,6 +176,8 @@ class App extends React.Component {
     this.catOrDog = this.catOrDog.bind(this);
     this.getCatCount = this.getCatCount.bind(this);
     this.getDogCount = this.getCatCount.bind(this);
+    this.isEndQuizDone = this.isEndQuizDone.bind(this);
+    //this.openAuswertung = this.openAuswertung.bind(this)
 
 
 
@@ -254,11 +257,25 @@ class App extends React.Component {
 
 
   }
+  isEndQuizDone() {
+    return this.state.endQuizDone
+  }
   openEndQuiz = () => {
+    if (this.state.endQuizDone == false) {
+      this.setState({
+        endQuizVisible: true
+      })
+    }
+  }
+  openAuswertung = () => {
     this.setState({
-      endQuizVisible: true
+      auswertungVisible: true
     })
-
+  }
+  hideAuswertung = () => {
+    this.setState({
+      auswertungVisible: false
+    })
   }
   handleNoteClick() {
     this.setState({
@@ -308,7 +325,8 @@ class App extends React.Component {
       influencePoints: data.influencePoints,
       //quizProgress: data.qID,
       auswertungVisible: true,
-      endQuizVisible: false
+      endQuizVisible: false,
+      endQuizDone: true
 
     })
 
@@ -492,7 +510,7 @@ class App extends React.Component {
           <div className="contentWrap">
             <div className="holder">
 
-              <Product getName={this.getName} data={this.state.post} onChange={this.notificationOpen} id={this.state.post.id} onClick={this.onSingleClickHandler} code={this.state.code} openEndQuiz={this.openEndQuiz} />
+              <Product getName={this.getName} data={this.state.post} onChange={this.notificationOpen} id={this.state.post.id} onClick={this.onSingleClickHandler} code={this.state.code} openEndQuiz={this.openEndQuiz} endQuizDone={this.isEndQuizDone} openAuswertung={this.openAuswertung} />
 
             </div>
 
@@ -500,7 +518,7 @@ class App extends React.Component {
           {this.state.progressPoints >= 6 ? <Entscheidung openEndQuiz={this.openEndQuiz} showHiddenProgram={this.showHiddenProgram} /> : null}
 
           {this.state.endQuizVisible == true ? <EndQuiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData} loadImgNumber={this.getSubNumber} code={this.state.code} name={this.state.userName} influencePoints={this.state.influencePoints} sketchedImages={this.getSketches} katzoderhund={this.catOrDog} fotos={this.getPhotos} /> : null}
-          {this.state.auswertungVisible == true ? <Auswertung influencePoints={this.getInfluencePoints} showHiddenProgram={this.showHiddenProgram} /> : null}
+          {this.state.auswertungVisible == true ? <Auswertung influencePoints={this.getInfluencePoints} showHiddenProgram={this.showHiddenProgram} hideAuswertung={this.hideAuswertung} /> : null}
           <StartQuiz name={this.state.userName} saveFunction={this.saveStartQuizData} getBgColor={this.getBackgroundColor} />
 
           <Subliminal image={subimage} firstOpen={this.firstOpen}></Subliminal>
