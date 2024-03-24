@@ -44,9 +44,9 @@ class Auswertung extends React.Component {
     bildErgebnis() {
         if (this.state.influencePoints == 0) {
             return PendelImage
-        } else if (this.state.influencePoints == 1 || this.state.influencePoints == 2) {
+        } else if (this.state.influencePoints == 1) {
             return LupeImage
-        } else if (this.state.influencePoints == 3) {
+        } else if (this.state.influencePoints == 3 || this.state.influencePoints == 2) {
             return SteinImage
         } else if (this.state.influencePoints == 4) {
             return ToDoImage
@@ -57,9 +57,9 @@ class Auswertung extends React.Component {
     titelErgebnis() {
         if (this.state.influencePoints == 0) {
             return "Das Pendel"
-        } else if (this.state.influencePoints == 1 || this.state.influencePoints == 2) {
+        } else if (this.state.influencePoints == 1) {
             return "Die Lupe"
-        } else if (this.state.influencePoints == 3) {
+        } else if (this.state.influencePoints == 3 || this.state.influencePoints == 2) {
             return "Der Stein"
         } else if (this.state.influencePoints == 4) {
             return "Die To Do Liste"
@@ -70,22 +70,22 @@ class Auswertung extends React.Component {
     textErgebnis() {
         if (this.state.influencePoints == 0) {
             return "Du wirst beeinflusst? Nein, Du beeinflusst! Du durchschaust nicht nur jeden Trick, du trickst den Manipulator aus. Sehr gut!"
-        } else if (this.state.influencePoints == 1 || this.state.influencePoints == 2) {
-            return "Wie ein Detektiv durschschaust du fast jeden Trick und bist nur schwer beeinflussbar. Weiter so!"
-        } else if (this.state.influencePoints == 3) {
+        } else if (this.state.influencePoints == 1) {
+            return "Wie ein Detektiv durchschaust du fast jeden Trick und bist nur schwer beeinflussbar. Weiter so!"
+        } else if (this.state.influencePoints == 3 || this.state.influencePoints == 2) {
             return "Du bist beständig und dich kann man nicht so leicht überzeugen. Auf ausgeklügelte Tricks fällst aber auch du rein."
         } else if (this.state.influencePoints == 4) {
             return "Du befolgst gerne Regeln und Anweisungen. Immer dem Plan zu folgen kann auch dazu führen, dass man dich leichter lenken kann."
         } else if (this.state.influencePoints == 5) {
-            return "Wie eine Feder im Wind lässt du dich treiben. Du bist eher vertäumt und lässt dich bewusst und unbewusst leiten."
+            return "Wie eine Feder im Wind lässt du dich treiben. Du bist eher vertäumt und lässt dich bewusst oder unbewusst leiten."
         }
     }
     textEinstufung() {
         if (this.state.influencePoints == 0) {
             return "gar nicht"
-        } else if (this.state.influencePoints == 1 || this.state.influencePoints == 2) {
+        } else if (this.state.influencePoints == 1) {
             return "kaum"
-        } else if (this.state.influencePoints == 3) {
+        } else if (this.state.influencePoints == 3 || this.state.influencePoints == 2) {
             return "moderat"
         } else if (this.state.influencePoints == 4) {
             return "ziemlich"
@@ -111,8 +111,8 @@ class Auswertung extends React.Component {
                     <div className="auswertungBox">
                         <div className="erklärung">
                             <h1>Worum geht es in diesem Experiment?</h1>
-                            Der MindSpace hat versucht dich zu beeinflussen. Es ging darum, verschiedene Manipulationsmechanismen anzuwenden, um deine Entscheidungen zu lenken.
-                            Daten über deine Entscheidungen wurden gesammelt und ausgewertet. Das Ziel dieses Experiments ist zum einen den Teilnehmer:innen die deine eigene Beeinflussbarkeit bewusster zu machen und zum anderen das Testen von Manipulationsmechanismen.
+                            Der MindSpace hat versucht dich zu beeinflussen. Verschiedene Manipulationsmechanismen wurden eingesetzt, um deine Entscheidungen zu lenken.
+                            Daten über deine Entscheidungen wurden gesammelt und ausgewertet. Das Ziel dieses Experiments ist zum einen den Teilnehmer:innen die eigene Beeinflussbarkeit bewusster zu machen und zum anderen eine Erkenntnisgewinnung über die Wirksamkeit von gezielt eingesetzten Manipulationsmechanismen.
                             Ob der MindSpace geschafft hat dich zu beeinflussen erfährst du in deiner persönlichen Auswertung.
                         </div><button id="5" className="btnAus" onClick={this.handleClick}>Zu deiner Auswertung</button>
 
@@ -126,7 +126,7 @@ class Auswertung extends React.Component {
                     <div className="auswertungBox">
                         <h1>Auswertung</h1>
                         <img className="resultImage" src={this.bildErgebnis()}></img><br></br>
-                        Dein Ergebnis: <h1>{this.titelErgebnis()}</h1>
+                        <p >Dein Ergebnis:</p> <h1>{this.titelErgebnis()}</h1>
                         <p>{this.textErgebnis()}</p>
 
 
@@ -155,11 +155,10 @@ class Auswertung extends React.Component {
 
                         <h2>1. Subliminal Messaging</h2>
                         <HoverImage className="manipulationImg" id="1" src={require('./img/sub-' + this.state.subNumber + '.svg').default} hoverSrc={require('./img/sub-' + this.state.subNumber2 + '.svg').default} /><br></br>
-
-                        Vielleicht hast du ein Aufflackern bemerkt. Das war eine subliminale Beeinflussung, also ein visueller Trigger, der dich unterbewusst an eine Form gewöhnen sollte, die du dann auswählen solltest.
+                        Vielleicht hast du am Anfang des Experiments ein Aufflackern bemerkt. Das war eine subliminale Beeinflussung, also ein visueller Trigger, der dich unterbewusst an eine Form gewöhnen sollte, der die Wahrscheinlichkeit erhöht, dass du diese auswählst.
 
                         <h2>2. Assoziation</h2>
-                        Die Weisheiten, die der Generator für dich erstellt hat, enthalten Begriffe die dich auf eine Entscheidung vorbereiten sollte. Die Assoziationen, die ausgelöst werden sollten, waren "warm" und "gelb", ohne diese Begriffe direkt zu nennen. So solltest du bei deiner Wahl der Durchschnittstemperatur und der zwischen Apfel und Banane zu einer wärmeren Temperatur tendieren und die Banane auswählen.
+                        Die Weisheiten, die der Generator für dich erstellt hat, enthalten Begriffe die Assoziationen auslösen sollen, die eine Entscheidung beeinflussen können. Die Assoziationen, die ausgelöst werden sollten, waren "warm" und "gelb", ohne diese Begriffe direkt zu nennen. So solltest du bei deiner Wahl der Durchschnittstemperatur zu einer wärmeren Temperatur tendieren und bei der Wahl zwischen Drachenfrucht und Honigmelone die Honigmelone auswählen.
 
                         <h2>3. Priming</h2>
                         <HoverImage className="manipulationImg" src={SpiraleImage} hoverSrc={BoxImage} /><br></br>
@@ -168,7 +167,7 @@ class Auswertung extends React.Component {
                            <h2>4. Hund oder Katze?</h2>
                         <HoverImage className="manipulationImg" src={HundIcon} hoverSrc={KatzeIcon} /><br></br>
 
-                        Auf Social Media Plattformen entsteht bei der Nutzung ein Datenprofil, das versucht dein Verhalten vorherzusagen. Deshalb bekommst du dort Inhalte angezeigt, die deinen Interessen entsprechen. Du konntest die Katzen- und Hundebilder ansehen. Ich wollte herausfinden, ob du Katzen oder Hunde bevorzugst.
+                        Auf Social Media Plattformen entsteht bei der Nutzung ein Datenprofil, das versucht dein Verhalten vorherzusagen. Deshalb bekommst du dort Inhalte angezeigt, die deinen Interessen entsprechen. Du konntest die Katzen- und Hundebilder ansehen. Ich wollte herausfinden, ob du Katzen oder Hunde bevorzugst. Du wurdest in ein Persönlichkeitsprofil eingeteilt, das Hunde- bzw. Katzenmenschen entspricht. Deshalb wusste ich, ob du lieber entspannst oder in Bewegung bist.
                     </div>
                     <button id="4" className="btnMani" onClick={this.handleClick}>Zurück zum Ergebnis</button>
 

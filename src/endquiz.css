@@ -13,12 +13,9 @@
     background-size: 50px 50px;
     background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.311) 25%, rgba(255, 255, 255, 0.311) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.311) 75%, rgba(255, 255, 255, 0.311) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.311) 25%, rgba(255, 255, 255, 0.311) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.311) 75%, rgba(255, 255, 255, 0.311) 76%, transparent 77%, transparent);
     overflow: hidden;
-
 }
 
 .box {
-
-
     background-color: #eef2f3;
     position: absolute;
     top: 20%;
@@ -32,8 +29,6 @@
     line-height: 20pt;
 }
 
-
-
 #welcomeButton {
     position: absolute;
     bottom: 10%;
@@ -44,15 +39,12 @@
     font-size: 20pt;
     background-color: #ffffff7b;
     border: 1px solid black;
-
     box-shadow: 0 0 0 black;
     transition: all 0.2s;
-
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
     text-align: center;
     box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
     transform: translate(-0.4rem, -0.4rem);
-
 }
 
 #welcomeButton:hover {
@@ -63,11 +55,9 @@
 #welcomeButton:active {
     box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
     transform: translate(-0.4rem, -0.4rem);
-
 }
 
 .btn {
-
     width: 80%;
     height: 50px;
     font-size: 12pt;
@@ -83,15 +73,31 @@
     text-align: center;
     box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
     transform: translate(-0.4rem, -0.4rem);
+}
 
+.btnCenter {
+    position: absolute;
+    width: 30%;
+    height: 50px;
+    bottom: 0;
+    font-size: 12pt;
+    background-color: #ffffff7b;
+    border: 1px solid black;
+    box-shadow: 0 0 0 black;
+    transition: all 0.2s;
+    margin-top: 35px;
+    margin-bottom: 60px;
+    margin-left: 35%;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    text-align: center;
+    box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
+    transform: translate(-0.4rem, -0.4rem);
 }
 
 .btnSave {
-
-    position: absolute;
     bottom: 50px;
     height: 50px;
-    font-size: 12pt;
+    width: 300px;
     background-color: #ffffff7b;
     border: 1px solid black;
     box-shadow: 0 0 0 black;
@@ -100,34 +106,31 @@
     margin-bottom: 60px;
     padding-left: 10%;
     padding-right: 10%;
-    margin-left: 35%;
-    margin-right: 40%;
+    margin: 0 auto;
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
     font-size: 20pt;
     text-align: center;
     box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
     transform: translate(-0.4rem, -0.4rem);
-
 }
 
-
 .btn:hover,
-.btnSave:hover {
+.btnSave:hover,
+.btnCenter:hover {
     background-color: white;
     box-shadow: 0 0 0 black;
     transform: translate(0, 0);
 }
 
 .btn:active,
-.btnSave:active {
+.btnSave:active,
+.btnCenter:active {
     box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
     transform: translate(-0.4rem, -0.4rem);
-
 }
 
 .colorDiv {
-    margin-top: 10%;
-    margin-left: 10%;
+    margin: 20px;
     width: 15vh;
     height: 15vh;
     border: 1px solid rgba(0, 0, 0, 0.626);
@@ -186,13 +189,11 @@
     background-size: 50px 50px;
     background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.311) 25%, rgba(255, 255, 255, 0.311) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.311) 75%, rgba(255, 255, 255, 0.311) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.311) 25%, rgba(255, 255, 255, 0.311) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.311) 75%, rgba(255, 255, 255, 0.311) 76%, transparent 77%, transparent);
     overflow: hidden;
-
 }
 
 .welcomeBox {
     width: 350px;
     padding: 2%;
-
     background-color: #eef2f3;
     position: absolute;
     top: 35%;
@@ -217,15 +218,12 @@
     font-size: 20pt;
     background-color: #ffffff7b;
     border: 1px solid black;
-
     box-shadow: 0 0 0 black;
     transition: all 0.2s;
-
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
     text-align: center;
     box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
     transform: translate(-0.4rem, -0.4rem);
-
 }
 
 #startButton:hover {
@@ -236,65 +234,46 @@
 #startButton:active {
     box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.626);
     transform: translate(-0.4rem, -0.4rem);
-
 }
 
 .slidecontainer {
     padding-top: 10%;
     width: 80%;
     text-align: center;
-    /* Width of the outside container */
+    grid-column: 1 / 5;
+    grid-row: 1 / 4;
+    justify-self: center;
+    margin: auto;
 }
 
-/* The slider itself */
 .slider {
     -webkit-appearance: none;
-    /* Override default CSS styles */
     appearance: none;
     width: 100%;
-    /* Full-width */
     height: 25px;
-    /* Specified height */
     background: #d3d3d3;
-    /* Grey background */
-    /*outline: none;
-    /* Remove outline */
     opacity: 0.7;
-    /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s;
-    /* 0.2 seconds transition on hover */
     transition: opacity .2s;
 }
 
-/* Mouse-over effects */
 .slider:hover {
     opacity: 1;
-    /* Fully shown on mouse-over */
 }
 
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    /* Override default look */
     appearance: none;
     width: 25px;
-    /* Set a specific slider handle width */
     height: 25px;
-    /* Slider handle height */
     background: #FFCF0A;
     border: 0.25px solid black;
-    /* Green background */
     cursor: pointer;
-    /* Cursor on hover */
 }
 
 .slider::-moz-range-thumb {
     width: 25px;
-    /* Set a specific slider handle width */
     height: 25px;
-    /* Slider handle height */
     background: #FFCF0A;
-    /* Green background */
     cursor: pointer;
-    /* Cursor on hover */
 }

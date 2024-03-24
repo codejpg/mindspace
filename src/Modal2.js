@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Draggable from 'react-draggable'
-import { textChangeRangeIsUnchanged } from "typescript";
+//import { textChangeRangeIsUnchanged } from "typescript";
 
 import "./Modal.css";
 

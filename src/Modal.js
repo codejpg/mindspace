@@ -1,44 +1,27 @@
-import React, { Component } from "react";
+import React from "react";
 import Draggable from 'react-draggable'
-import { textChangeRangeIsUnchanged } from "typescript";
-
 import "./Modal.css";
 
-class Modal extends Component {
-  isActiveToggle = () => {
-    return this.props.isActive ? 900 : null
+const Modal = (props) => {
+  const isActiveToggle = () => {
+    return props.isActive ? 900 : null
   }
-  render() {
-    console.log(this.props.show);
 
-
-    return (
-
-      <React.Fragment>
-        {this.props.show && (
-          <Draggable
-            handle="#modalTopBar"
-          //bounds={{ top: -250, left: -250, right: 250, bottom: 250 }}
-          >
-            <div className={this.props.modalClass}
-              style={{ zIndex: this.isActiveToggle() }}>
-              {console.log("modalClass: " + this.props.modalClass)}
-
-
-              <div id="modalTopBar" onClick={this.props.onClick}><h1>{this.props.name}</h1></div>
-
-              <button className="closeBtnEck" onClick={this.props.onHide}></button>
-              <div className="content" id="cont"
-                value={this.props.code}
-                onClick={this.props.onClick}
-              >{this.props.content}</div>
+  return (
+    <React.Fragment>
+      {props.show && (
+        <Draggable handle="#modalTopBar">
+          <div className={props.modalClass} style={{ zIndex: isActiveToggle() }}>
+            <div id="modalTopBar" onClick={props.onClick}><h1>{props.name}</h1></div>
+            <button className="closeBtnEck" onClick={props.onHide}></button>
+            <div className="content" id="cont" value={props.code} onClick={props.onClick}>
+              {props.content}
             </div>
-          </Draggable>
-        )
-        }
-      </React.Fragment>
-    );
-  }
+          </div>
+        </Draggable>
+      )}
+    </React.Fragment>
+  );
 }
 
 export default Modal;

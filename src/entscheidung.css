@@ -102,7 +102,7 @@
     right: 20%;
     bottom: 10%;
     background-color: #eef2f3;
-    padding: 40px;
+    padding: 40px 0 40px 40px;
     border: solid 0.5px grey;
     border-radius: 3px;
     -webkit-box-shadow: 1.2rem 1.2rem 0 rgba(0, 0, 0, 0.133);
@@ -125,6 +125,7 @@
 .innerDiv {
     height: 80%;
     overflow-y: scroll;
+    padding: 20px;
 }
 
 .resultImage {
@@ -152,6 +153,11 @@
 .erklärung h1 {
     line-height: 40pt;
 }
+
+.auswertungBox p {
+    text-align: center;
+}
+
 
 
 .btnAus {
@@ -192,7 +198,7 @@
     margin-bottom: 20px;
     padding-left: 10%;
     padding-right: 10%;
-    margin-left: 25%;
+    margin-left: 30%;
     margin-right: 40%;
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 

@@ -1,81 +1,66 @@
 import React from "react"
-import fileData from "./fileData"
+
 import Logo from './img/logo.svg'
 import './Desktop.css'
-import Dropdown from 'react-dropdown';
+//import Dropdown from 'react-dropdown';
 import EndQuiz from './endQuiz'
 import StartQuiz from './startQuiz'
-import Generator from './filmreview'
+import Generator from './generator'
 import Entscheidung from './entscheidung'
 import Auswertung from './auswertung'
 
 
 import FolderImage from './img/mindspace-11.svg'
-import GameImage from './img/MindSpaceRGB neu-13.svg'
+//import GameImage from './img/MindSpaceRGB-neu-13.svg'
 import PhotoImage from './img/mindspace-09.svg'
 import KunstImage from './img/mindspace-61.svg'
-import PolyImage from './img/MindSpaceRGB neu-12.svg'
+//import PolyImage from './img/MindSpaceRGB-neu-12.svg'
 import DrawImage from './img/mindspace-10.svg'
 import ProgressImage from './img/mindspace-68.svg'
-import QuizImage from './img/MindSpaceRGB-21.svg'
+//import QuizImage from './img/MindSpaceRGB-21.svg'
 import EndeImage from './img/mindspace-48.svg'
-import LupeImage from './img/mindspace-53.svg'
-import TextImage from './img/mindspace-55.svg'
+//import LupeImage from './img/mindspace-53.svg'
+//import TextImage from './img/mindspace-55.svg'
 import PhotoAutomatImage from './img/fotoautomatt-63.svg'
 import GeneratorImage from './img/AUTOMAT-65.svg'
 
 import FolderImageHover from './img/mindspace-18.svg'
-import GameImageHover from './img/MindSpaceRGB-16.svg'
+//import GameImageHover from './img/MindSpaceRGB-16.svg'
 import PhotoImageHover from './img/mindspace-63.svg'
 import KunstImageHover from './img/mindspace-60.svg'
-import PolyImageHover from './img/MindSpaceRGB neu-17.svg'
+//import PolyImageHover from './img/MindSpaceRGB-neu-17.svg'
 import DrawImageHover from './img/mindspace-59.svg'
 import ProgressImageHover from './img/mindspace-67.svg'
 import QuizImageHover from './img/MindSpaceRGB-36.svg'
 import EndeImageHover from './img/mindspace-50.svg'
-import LupeImageHover from './img/mindspace-52.svg'
-import TextImageHover from './img/mindspace-54.svg'
+//import LupeImageHover from './img/mindspace-52.svg'
+//import TextImageHover from './img/mindspace-54.svg'
 import PhotoAutomatImageHover from './img/fotoautomatt-64.svg'
 import GeneratorImageHover from './img/AUTOMAT-67.svg'
 
 import SettingsIcon from './img/mindspace-20.svg'
 import SettingsIconHover from './img/mindspace_-20.svg'
 
-import SubImage from './img/sub-1.svg'
 
 import WarmTap from './sounds/tap-warm.mp3'
 
 import Einleitung from "./einleitung"
-import Logo1 from './img/MindSpace-13.svg'
+//import Logo1 from './img/MindSpace-13.svg'
 import Clock from 'react-live-clock';
 import Ordner from "./ordner";
-import Dum from "./sketch"
 import Sketch2 from "./sketch2"
 import PhotoBooth from "./photoBooth"
-import PolySketch from "./polySketch"
-import Product from "./Product";
-import Quiz from "./Quiz"
+import Programm from "./Programm";
+//import Quiz from "./Quiz"
 import Kunst from "./Kunst"
-import Notification2 from "./Notification2"
 import Subliminal from './subliminal'
 import Draggable from "react-draggable";
 import Login from "./login"
-import Progress from "./progress"
 import Settings from "./settings"
-import Lupe from "./lupe"
 import Notiz from "./notiz.js"
 
-import { ThemeConsumer } from "styled-components";
 
-import { EasybaseProvider, useEasybase } from 'easybase-react';
-import { useEffect } from 'react';
-import ebconfig from './ebconfig';
-import { Checkbox } from "@material-ui/core";
-
-var preCodes = ["0000", "1111", "2222", "1212", "89238983bw", "A22-Bt31", "F37-25T"];
-
-
-
+var preCodes = ["0000", "1111", "2222", "1212", "89238983bw", "A22-Bt31", "F37-25T", "A56-MR8", "A22-I73", "L27-KT5", "T77-3BS", "E64-73Q", "P6R-29Y"];
 
 
 class App extends React.Component {
@@ -134,7 +119,9 @@ class App extends React.Component {
         { id: 8, bgColor: "#90bc9c" }
       ],
       settingsVisible: false,
-      files: fileData,
+      time: 0,
+      start: 0,
+
       day: today.getDate(),
       month: today.getMonth(),
       wochentag: weekday[today.getDay()],
@@ -178,15 +165,28 @@ class App extends React.Component {
     this.getCatCount = this.getCatCount.bind(this);
     this.getDogCount = this.getCatCount.bind(this);
     this.isEndQuizDone = this.isEndQuizDone.bind(this);
-    //this.openAuswertung = this.openAuswertung.bind(this)
-
-
-
+    this.startTimer = this.startTimer.bind(this)
+    this.stopTimer = this.stopTimer.bind(this)
+    this.resetTimer = this.resetTimer.bind(this)
   }
-  timer = 0;
-  delay = 200;
-  prevent = false;
-
+  startTimer() {
+    this.setState({
+      time: this.state.time,
+      start: Date.now()
+    })
+    this.timer = setInterval(() => this.setState({
+      time: Date.now() - this.state.start
+    }), 1)
+    console.log("start")
+  }
+  stopTimer() {
+    clearInterval(this.timer)
+    console.log("stop")
+  }
+  resetTimer() {
+    this.setState({ time: 0 })
+    console.log("reset")
+  }
 
 
   componentDidMount() {
@@ -304,6 +304,7 @@ class App extends React.Component {
       startSubliminal: true
 
     })
+    this.startTimer()
     console.log("influencePoints: ", this.state.influencePoints)
   }
 
@@ -483,9 +484,9 @@ class App extends React.Component {
   render() {
     const subimage = require('./img/sub-' + this.state.subImgNumber + '.svg')
     /*
-    document.addEventListener('click', function() {
-      clickSound();
-    });*/
+        document.addEventListener('click', function () {
+          clickSound();
+        });*/
 
 
 
@@ -495,7 +496,7 @@ class App extends React.Component {
     ];
 
     return (
-      <EasybaseProvider ebconfig={ebconfig}>
+      //<EasybaseProvider ebconfig={ebconfig}>
 
         <div className="Desktop" style={{ backgroundColor: this.state.currentBgColor }}>
           <Login login={this.state.isLoggedIn} onClick={this.handleLoginClick}></Login>
@@ -512,12 +513,12 @@ class App extends React.Component {
           <div className="contentWrap">
             <div className="holder">
 
-              <Product getName={this.getName} data={this.state.post} onChange={this.notificationOpen} id={this.state.post.id} onClick={this.onSingleClickHandler} code={this.state.code} openEndQuiz={this.openEndQuiz} endQuizDone={this.isEndQuizDone} openAuswertung={this.openAuswertung} />
+              <Programm getName={this.getName} data={this.state.post} onChange={this.notificationOpen} id={this.state.post.id} onClick={this.onSingleClickHandler} code={this.state.code} openEndQuiz={this.openEndQuiz} endQuizDone={this.isEndQuizDone} openAuswertung={this.openAuswertung} />
 
             </div>
 
           </div>
-          {this.state.progressPoints >= 6 ? <Entscheidung openEndQuiz={this.openEndQuiz} showHiddenProgram={this.showHiddenProgram} /> : null}
+          {this.state.progressPoints >= 6 || this.state.time > 240000 ? <Entscheidung openEndQuiz={this.openEndQuiz} showHiddenProgram={this.showHiddenProgram} stopTimer={this.stopTimer} /> : null}
 
           {this.state.endQuizVisible == true ? <EndQuiz saveFunction={this.saveQuizData} loadFunction={this.getQuizData} loadImgNumber={this.getSubNumber} code={this.state.code} name={this.state.userName} influencePoints={this.state.influencePoints} sketchedImages={this.getSketches} katzoderhund={this.catOrDog} fotos={this.getPhotos} /> : null}
           {this.state.auswertungVisible == true ? <Auswertung influencePoints={this.getInfluencePoints} loadImgNumber={this.getSubNumber} showHiddenProgram={this.showHiddenProgram} hideAuswertung={this.hideAuswertung} /> : null}
@@ -542,12 +543,12 @@ class App extends React.Component {
 
 
         </div>
-      </EasybaseProvider>
+      //</EasybaseProvider>
     );
   }
 }
 function SavingData(props) {
-  const { Frame, sync } = useEasybase();
+  //const { Frame, sync } = useEasybase();
 
   const buttonStyle = {
     position: "absolute",
@@ -558,15 +559,15 @@ function SavingData(props) {
 
   const handleClick = () => {
 
-    Frame().push({
-      code: props.code,
-      name: props.name,
-      datum: new Date().toISOString(),
-      influencePoints: props.influencePoints,
-      images: props.sketchedImages,
-    })
+    // Frame().push({
+    //   code: props.code,
+    //   name: props.name,
+    //   datum: new Date().toISOString(),
+    //   influencePoints: props.influencePoints,
+    //   images: props.sketchedImages,
+    // })
 
-    sync();
+    // sync();
   }
 
 }

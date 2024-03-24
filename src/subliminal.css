@@ -16,9 +16,9 @@
 
 #subliminal img {
     vertical-align: center;
-    width: 60%;
+    width: 50%;
     position: fixed;
-    top: 20%;
+    top: 10%;
     left: 20%;
     z-index: 1000;
 }
